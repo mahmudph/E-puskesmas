@@ -1,0 +1,166 @@
+/*  for mixin  */
+html,
+body {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  margin: 0em;
+  min-height: 100%;
+  height: 100% !important;
+  width: 100% !important;
+}
+
+.profile-data {
+  width: 100%;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  padding-top: 10px;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.profile-data a {
+  -webkit-align-self: center;
+      -ms-flex-item-align: center;
+              -ms-grid-row-align: center;
+          align-self: center;
+}
+
+.profile-data .admin-name {
+  padding-top: 10px;
+  text-align: center;
+  font-size: 1.2em;
+  color: '#eee';
+  text-transform: capitalize;
+  margin-bottom: 0.5em;
+}
+
+/*  login page  */
+#login-content {
+  position: absolute;
+  height: 100%;
+  min-height: 100%;
+  background-color: #eee;
+}
+
+#login-content .row {
+  height: 100% !important;
+}
+
+#login-content .row .beener-content {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  background-color: #60ABF4;
+}
+
+#login-content .row .beener-content .banner-welcom {
+  padding: 1.3em;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+#login-content .row .beener-content .alamat-caption {
+  text-align: center;
+}
+
+#login-content .row .beener-content .contact a {
+  color: red;
+}
+
+#login-content .row .login-form {
+  padding: 1.3em;
+  height: 100%;
+  overflow: scroll;
+}
+
+#login-content .row .login-form .login-form-icon {
+  width: 100%;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: row;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: start;
+  -webkit-justify-content: flex-start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+}
+
+#login-content .row .login-form .login-form-icon .caption {
+  padding-top: 0.9em;
+  padding-left: 0.8em;
+}
+
+#login-content .row .login-form .register div {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: row;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-justify-content: space-around;
+      -ms-flex-pack: distribute;
+          justify-content: space-around;
+}
+
+#login-content .row .errors-handler {
+  margin-top: 1.2em;
+}
+
+@media screen and (max-width: 500) {
+  #login-content {
+    position: none;
+    min-height: auto;
+    height: auto !important;
+  }
+  #login-content .row {
+    min-height: auto;
+    height: auto;
+  }
+  #login-content .row .beener-content {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -webkit-flex-direction: column;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    min-height: 60% !important;
+    height: 60% !important;
+  }
+}
+/*# sourceMappingURL=main.css.map */
