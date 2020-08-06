@@ -30,7 +30,31 @@ $routes->setAutoRoute(true);
 
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
-$routes->get('/', 'Home::index');
+$routes->get('auth/login', 'Auth::login');
+$routes->get('auth/register', 'Auth::register');
+
+
+/* untuk pengguna dinas kesehatan */
+$routes->group('dinas', function($routes) {
+	$routes->add('/', 'Dinas\Home::index');
+	$routes->add('puskesmas', 'Dinas\Puskes::index');
+	$routes->add('laporan_pasien', 'Dinas\Laporan_pasien::index');
+	$routes->add('pengumuman', 'Dinas\Pengumuman::index');
+});
+
+/* untuk pengguna admin puskesmas */
+$routes->group('admin', function($routes) {
+	$routes->add('/', 'Admin\Home::index');
+	$routes->add('puskesmas', 'Admin\Puskes::index');
+	$routes->add('laporan_pasien', 'Admin\Laporan_pasien::index');
+	$routes->add('pengumuman', 'Admin\Pengumuman::index');
+});
+
+
+/* untuk pengguna umum */
+// $routes->group('/', function($routes) {
+// 	$routes->add('profil', 'Admin\Home::index');
+// });
 
 /**
  * --------------------------------------------------------------------

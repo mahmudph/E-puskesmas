@@ -33,4 +33,62 @@ class Validation
 	//--------------------------------------------------------------------
 	// Rules
 	//--------------------------------------------------------------------
+
+	public $login = [
+    'email' => 'required|valid_email',
+    'password' => 'required|min_length[8]',
+	];
+
+	public $login_errors = [
+		'email' =>  [
+			'required' => 'email wajid di sisi',
+			'valid_email' => 'email tidak valid',
+		],
+		'password' => [
+			'required' => 'password tidak boleh kosong',
+			'min_length' => 'password tidak boleh kurang dari 6 huruf'
+		]
+	];
+
+	public $register = [
+		'nama' => 	'required|min_length[8]',
+		'email' => 'required|valid_email',
+		'jenis_kelamin' => 'required|in_list[pria, wanita]',
+		'tgl_lahir' => 'required|valid_date',
+		'alamat' => 'required|min_length[8]',
+		'password'	 =>'required|min_length[8]',
+		'confirm_password' => 'required|matches[password]',
+	];
+
+	public $register_errors = [
+		'nama' => [
+			'required' =>'field nama tidak boleh kosong',
+			'min_length' => 'field nama harus memiliki minimal sebanyak 8',
+		],
+		'email' => [
+			'required' =>'field email tidak boleh kosong',
+			'valid_email' => 'email tidak valid',
+		],
+		'jenis_kelamin'=> [
+			'required' =>'field jenis kelamin tidak boleh kosong',
+			'in_list' => 'filed jenis kelamin tidak valid',
+		],
+		'tgl_lahir' =>  [
+			'required' =>'field tanggal lahir tidak boleh kosong',
+			'valid_date' => 'field tanggal lahir tidak valid',
+		],
+		'alamat' =>  [
+			'required' =>'field alamat tidak boleh kosong',
+			'min_length' => 'field alamat harus memiliki minimal sebanyak 8',
+		],
+		'password'	 => [
+			'required' =>'field password tidak boleh kosong',
+			'min_length' => 'field password minimal sebanyak 8 huruf',
+		],
+		'confirm_password' =>  [
+			'required' =>'field konfirmasi password tidak boleh kosong',
+			'matches' => 'confirm password tidak cocok',
+		]
+	];
 }
+

@@ -1,5 +1,8 @@
 <?php namespace Config;
 
+
+
+
 /**
  * Database Configuration
  *
@@ -32,9 +35,9 @@ class Database extends \CodeIgniter\Database\Config
 	public $default = [
 		'DSN'      => '',
 		'hostname' => 'localhost',
-		'username' => 'root',
+		'username' => '',
 		'password' => '',
-		'database' => 'e_puskesmas',
+		'database' => '',
 		'DBDriver' => 'MySQLi',
 		'DBPrefix' => '',
 		'pConnect' => false,
