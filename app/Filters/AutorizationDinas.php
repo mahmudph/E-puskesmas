@@ -20,7 +20,4 @@ class AutorizationDinas implements FilterInterface {
     /* pass */
   }
 }
-
-
-
 ?>

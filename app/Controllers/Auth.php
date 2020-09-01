@@ -7,9 +7,27 @@ class Auth extends BaseController
 	public function __construct() {
 		helper('url');
 		helper('form');
-		$this->session = session();
 		$this->users   = new UserModel();
+		$this->email 	 = \Config\Services::email();
+		$this->session = \Config\Services::session();
 		$this->form_validation = \Config\Services::validation();
+
+		if($this->session->has('is_login')) {
+			$usr_level =  $this->session->get('user_level');
+			if($usr_level == 1 ) {
+				return  redirect()->to('/dinas');
+			} else if($usr_level == 2 ){
+				
+				return  redirect()->to('/admin');
+			} else {
+				
+				return  redirect()->to('/user');
+			}
+		}
+	}
+
+	public function index() {
+		return redirect()->to(base_url('auth/login'));
 	}
 
 	public function login()
@@ -35,10 +53,12 @@ class Auth extends BaseController
 			$user = $this->users->find_by_email_pwd($email, $pwd);
 			if(isset($user)){
 				$data_user = ['nama' => $user->nama, 'is_login' => true,'user_level' => $user->user_level];
-				$this->session->set('user', $data_user);
-				if($data_user['user_level'] == 1) {
+				$this->session->set($data_user);
+
+				$user_level = $this->session->get('user_level');
+				if( $user_level == 1) {
 					return redirect()->to(base_url('dinas'));
-				} elseif ($data_user['user_level'] == 2) {
+				} elseif ($user_level = 2) {
 					return redirect()->to(base_url('admin'));
 				} else{
 					return redirect()->to(base_url('user'));
@@ -95,7 +115,33 @@ class Auth extends BaseController
 		}
 	}
 	public function logout() {
-		$this->session->sess_destroy();
-		redirect(base_url('auth/login'));
+		$this->session->destroy();
+		return redirect()->to(base_url('auth/login'));
+	}
+
+	public function reset_password() {
+		$v['title'] = 'Reset password';
+		echo view('page/reset_password', $v);
+	}
+
+	public function reset_password_post() {
+		$data =[
+			'email' => $this->request->getPost('email')
+		];
+		$result = $this->form_validation->run($data, 'reset_pwd');
+		if($result) {
+			$user = $this->users->toObject()->where('email', $data['email'])->limit(1)->find();
+			if(!empty($user)) {
+				/* send reset password token here */
+				$v = ['Token reset password sudah dikirim ke email'];
+			} else {
+				$v = ['Email Tidak ditemukan'];
+			}
+			$this->session->setFlashdata('response', $v);
+			return redirect()->to(base_url('auth/reset_pasword'));
+		} else {
+			/* something wrong with input value */
+
+		}
 	}
 }

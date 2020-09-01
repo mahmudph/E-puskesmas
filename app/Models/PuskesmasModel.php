@@ -1,10 +1,10 @@
 <?php namespace App\Models;
 
-use Codeigniter\Model;
+use CodeIgniter\Model;
 
 class PuskesmasModel extends Model {
   protected $table = 'tbl_puskesmas';
-
+  protected $allowedFields = ['nama_puskesmas', 'status','token_aktifasi', 'alamat_puskesmas', 'admin_puskesmas'];
   public function insertData($data) {
     $this->db->insert($data);
   }
@@ -14,7 +14,12 @@ class PuskesmasModel extends Model {
   }
 
   public function updateById($data, $id) {
-    return $this->db->update($data. ['id' => $id]);
+    $this->db->where('id',$id);
+    return $this->db->update($this->table, $data);
+  }
+
+  public function getData() {
+    return $this->getWhere(['status' => 1]);
   }
 }
 

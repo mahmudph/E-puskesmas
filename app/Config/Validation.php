@@ -90,5 +90,49 @@ class Validation
 			'matches' => 'confirm password tidak cocok',
 		]
 	];
+
+	public $new_puskesmas = [
+		'nama_puskesmas' => 'required',
+		'alamat_puskesmas' => 'required',
+		'admin_puskesmas' => 'required',
+		'token_aktifasi' => 'required',
+	];
+
+	public $new_puskesmas_errors = [
+		'nama_puskesmas' => [
+			'required' => 'field nama puskesmas tidak boleh kosong ',
+		],
+		'alamat_puskesmas' => [
+			'required' => 'field alamat puskesmas tidak boleh kosong ',
+		],
+		'token_aktifasi' => [
+			'required' => 'field token aktifasi admin tidak boleh kosong ',
+		],
+		'admin_puskesmas' => [
+			'required' => 'field admin puskesmas tidak boleh kosong',
+		]
+	];
+
+	public $update_puskesmas = [
+		'nama_puskesmas' => 'required',
+		'alamat_puskesmas' => 'required',
+		'admin_puskesmas' => 'required',
+		'token_aktifasi' => 'required',
+	];
+
+	public $update_puskesmas_errors = [
+		'nama_puskesmas' => [
+			'required' => 'field nama puskesmas tidak boleh kosong ',
+		],
+		'alamat_puskesmas' => [
+			'required' => 'field alamat puskesmas tidak boleh kosong ',
+		],
+		'token_aktifasi' => [
+			'required' => 'field token aktifasi admin tidak boleh kosong ',
+		],
+		'admin_puskesmas' => [
+			'required' => 'field admin puskesmas tidak boleh kosong',
+		]
+	];
 }
 

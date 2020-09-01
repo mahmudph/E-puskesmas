@@ -28,33 +28,38 @@ $routes->setAutoRoute(true);
  * --------------------------------------------------------------------
  */
 
-// We get a performance increase by specifying the default
-// route since we don't have to scan directories.
-$routes->get('auth/login', 'Auth::login');
-$routes->get('auth/register', 'Auth::register');
 
 
 /* untuk pengguna dinas kesehatan */
-$routes->group('dinas', function($routes) {
+$routes->group('dinas', ['filter' => 'dinas_authorization'], function($routes) {
 	$routes->add('/', 'Dinas\Home::index');
-	$routes->add('puskesmas', 'Dinas\Puskes::index');
+	$routes->add('puskesmas', 'Dinas\Puskesmas::index');
 	$routes->add('laporan_pasien', 'Dinas\Laporan_pasien::index');
 	$routes->add('pengumuman', 'Dinas\Pengumuman::index');
+	$routes->add('pasien', 'Dinas\Pasien::index');
 });
 
 /* untuk pengguna admin puskesmas */
-$routes->group('admin', function($routes) {
+$routes->group('admin',['filter' => 'admin_authorization'], function($routes) {
 	$routes->add('/', 'Admin\Home::index');
 	$routes->add('puskesmas', 'Admin\Puskes::index');
 	$routes->add('laporan_pasien', 'Admin\Laporan_pasien::index');
 	$routes->add('pengumuman', 'Admin\Pengumuman::index');
 });
 
-
 /* untuk pengguna umum */
-// $routes->group('/', function($routes) {
-// 	$routes->add('profil', 'Admin\Home::index');
-// });
+$routes->group('users',['filter' => 'user_authorization'], function($routes) {
+	$routes->add('/', 'User\Home::index');
+	$routes->add('profil', 'User\Home::index');
+});
+
+
+// We get a performance increase by specifying the default
+// route since we don't have to scan directories.
+$routes->get('/', 'Auth::index');
+$routes->get('auth/login', 'Auth::login');
+$routes->get('auth/logout', 'Auth::logout');
+$routes->get('auth/register', 'Auth::register');
 
 /**
  * --------------------------------------------------------------------

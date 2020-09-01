@@ -16,7 +16,7 @@ class Auth implements FilterInterface {
     if(!$isLogin) {
       $v['inputs']['email'] = '';
       $v['inputs']['password'] = '';
-      $v['errors'] = ['silahkan login terlebih dahulu'];
+      $v['errors'] = ['Silahkan login terlebih dahulu'];
       $this->session->setFlashdata('response',$v);
       return redirect()->to(site_url('auth/login'));
     } 

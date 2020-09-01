@@ -37,13 +37,13 @@ class TblPendaftaran extends Migration
 		]);
 
 		$this->forge->addKey('id', true);
-		$this->forge->addForeignKey('id_user', 'tbl_user', 'id');
+		$this->forge->addForeignKey('id_user', 'tbl_users', 'id');
 		$this->forge->addForeignKey('id_puskesmas','tbl_puskesmas', 'id');
-		$this->forge->createTable('tbl_pendaftaran');
+		$this->forge->createTable('tbl_pendaftarans');
 	}
 
 	public function down()
 	{
-		$this->forge->dropTable('tbl_pendaftaran');
+		$this->forge->dropTable('tbl_pendaftarans');
 	}
 }

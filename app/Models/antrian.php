@@ -3,7 +3,7 @@
 use Codeigniter\Model;
 
 class UserModel extends Model {
-  protected $table = 'user';
+  protected $table = 'tbl_antrians';
   // protected $validationRules = [
   //   'nama' => 'required',
   //   'email' => 'required|valid_email',

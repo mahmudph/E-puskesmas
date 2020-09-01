@@ -1,5 +1,5 @@
 <li class="nav-item has-treeview menu-open">
-  <a href="<?= base_url() ?>" class="nav-link">
+  <a href="<?= base_url('dinas') ?>" class="nav-link">
     <i class="nav-icon fas fa-home"></i>
     <p>
       Dasboard
@@ -7,7 +7,7 @@
   </a>
 </li>
 <li class="nav-item">
-  <a href="<?= base_url('puskesmas') ?>" class="nav-link">
+  <a href="<?= base_url('dinas/puskesmas') ?>" class="nav-link">
     <i class="nav-icon fas fa-hospital"></i>
     <p>
      Data Puskesmas 
@@ -15,7 +15,7 @@
   </a>
 </li>
 <li class="nav-item">
-  <a href="<?= base_url('pasien') ?>" class="nav-link">
+  <a href="<?= base_url('dinas/pasien') ?>" class="nav-link">
     <i class="nav-icon fas fa-file-excel"></i>
     <p>
      Laporan Data Pasien 
@@ -23,7 +23,7 @@
   </a>
 </li>
 <li class="nav-item">
-  <a href="<?= base_url('pasien') ?>" class="nav-link">
+  <a href="<?= base_url('dinas/pasien') ?>" class="nav-link">
     <i class="nav-icon fas fa-paper-plane"></i>
     <p>
      Pengumuman

@@ -26,14 +26,14 @@ class TblAntrian extends Migration
 		]);
 
 		$this->forge->addKey('id', true);
-		$this->forge->addForeignKey('id_pendaftaran', 'tbl_pendaftaran', 'id');
-		$this->forge->createTable('tbl_antrian');
+		$this->forge->addForeignKey('id_pendaftaran', 'tbl_pendaftarans', 'id');
+		$this->forge->createTable('tbl_antrians');
 	}
 
 	//--------------------------------------------------------------------
 
 	public function down()
 	{
-		$this->forge->dropTable('tbl_antrian');
+		$this->forge->dropTable('tbl_antrians');
 	}
 }

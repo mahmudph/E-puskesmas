@@ -48,7 +48,7 @@ class TblUser extends Migration
 		]);
 
 		$this->forge->addKey('id', true);
-		$this->forge->createTable('tbl_user');
+		$this->forge->createTable('tbl_users');
 	}
 
 	//--------------------------------------------------------------------

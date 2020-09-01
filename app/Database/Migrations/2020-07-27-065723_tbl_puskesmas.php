@@ -22,6 +22,16 @@ class TblPuskesmas extends Migration
 				'type' => 'text',
 				'null' => false,
 			],
+			'status' => [
+				'type' => 'varchar',
+				'null' => false,
+				'constraint' => 11,
+			],
+			'token_aktifasi' => [
+				'type' => 'varchar',
+				'null' => false,
+				'constraint' => 25,
+			],
 			'admin_puskesmas' => [
 				'type' => 'int',
 				'constraint' => 6,
@@ -30,7 +40,7 @@ class TblPuskesmas extends Migration
 		]);
 
 		$this->forge->addKey('id', true);
-		$this->forge->addForeignKey('admin_puskesmas', 'tbl_user', 'id');
+		$this->forge->addForeignKey('admin_puskesmas', 'tbl_users', 'id');
 		$this->forge->createTable('tbl_puskesmas');
 
 	}

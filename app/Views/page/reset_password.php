@@ -40,11 +40,11 @@ $data = session()->getFlashdata('response');
           <div class="col-md-12 d-none d-md-block">
             <div class="login-form-icon ">
               <img src="<?= base_url('img/hospital_logo.png')?>" alt="logo login" width="80px" height="80px" srcset="">
-              <h2 class="caption ">Form Login</h2>
+              <h2 class="caption ">Form Reset Password</h2>
             </div>
           </div>
           <div class="col-md-6 offset-md-3 form-input">
-            <h4 class="text-center">Silahkan Login</h4>
+            <h4 class="text-center">Email Anda</h4>
             <?php if(!empty($data['success'])) : ?>
                 <div class="alert alert-success alert-sm" role="alert">
                     <ul>
@@ -54,7 +54,7 @@ $data = session()->getFlashdata('response');
                     </ul>
                 </div>
             <?php endif ?>
-            <form action="<?= base_url('auth/proses_login')?>" method="post" >
+            <form action="<?= base_url('auth/reset_password_post')?>" method="post" >
               <div class="input-group mb-3">
                 <div class="input-group-prepend">
                   <span class="input-group-text"><i class="fas fa-envelope"></i></span>
@@ -62,17 +62,11 @@ $data = session()->getFlashdata('response');
                 <input type="email" class="form-control" name="email" placeholder="Email" value="<?= $data['inputs']['email'] ?>">
               </div>
               <div class="input-group mb-3">
-                <div class="input-group-prepend">
-                  <span class="input-group-text"><i class="fas fa-lock"></i></span>
-                </div>
-                <input type="password" class="form-control" name="password" placeholder="password" value="<?= $data['inputs']['password'] ?>">
-              </div>
-              <div class="input-group mb-3">
-                <input type="submit" class="form-control btn btn-primary" placeholder="Email" value="Login">
+                <input type="submit" class="form-control btn btn-primary" placeholder="Email" value="Reset">
               </div>
               <div class="row register"> 
                 <div class="col-md-6 col-xs-6">
-                  <a href="<?= base_url('auth/reset_password') ?>">Lupa Password..?</a>
+                  <a href="<?= base_url('auth/lupa_password') ?>">Lupa Password..?</a>
                 </div>
                 <div class="col-md-6 col-xs-6">
                   <a href="<?= base_url('auth/register') ?>">Daftar akun</a>

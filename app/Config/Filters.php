@@ -11,6 +11,9 @@ class Filters extends BaseConfig
 		'toolbar'  => \CodeIgniter\Filters\DebugToolbar::class,
 		'honeypot' => \CodeIgniter\Filters\Honeypot::class,
 		'auth' 		 => \App\Filters\Auth::class,
+		'dinas_authorization' => \App\Filters\AutorizationDinas::class,
+		'admin_authorization' => \App\Filters\AutorizationAdmin::class,
+		'user_authorization' => \App\Filters\AutorizationUser::class,
 	];
 
 	// Always applied before every request
@@ -18,7 +21,7 @@ class Filters extends BaseConfig
 		'before' => [
 			//'honeypot'
 			// 'csrf',
-			// 'auth'=>['except'=>'auth/*']
+			'auth'=>['except'=> 'auth/*']
 		],
 		'after'  => [
 			'toolbar',
