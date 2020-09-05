@@ -83,6 +83,10 @@ $data = session()->getFlashdata('response');
                   <?= form_input(['name' => 'tgl_lahir','type' => 'date', 'class' => 'form-control', 'value' => $data['inputs']['tgl_lahir']]) ?>
                 </div>
                 <div class="form-group">
+                  <?= form_label('Tempat Desa', 'desa') ?>
+                  <?= form_input(['name' => 'desa','type' => 'text', 'class' => 'form-control', 'value' => $data['inputs']['desa']]) ?>
+                </div>
+                <div class="form-group">
                   <?= form_label('Alamat tinggal', 'alamat') ?>
                   <?= form_textarea(['name' => 'alamat', 'class' => 'form-control', 'rows' => 3, 'value' => $data['inputs']['alamat']]) ?>
                 </div>

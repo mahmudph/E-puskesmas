@@ -55,6 +55,7 @@ class Validation
 		'email' => 'required|valid_email',
 		'jenis_kelamin' => 'required|in_list[pria, wanita]',
 		'tgl_lahir' => 'required|valid_date',
+		'desa' => 'required',
 		'alamat' => 'required|min_length[8]',
 		'password'	 =>'required|min_length[8]',
 		'confirm_password' => 'required|matches[password]',
@@ -76,6 +77,9 @@ class Validation
 		'tgl_lahir' =>  [
 			'required' =>'field tanggal lahir tidak boleh kosong',
 			'valid_date' => 'field tanggal lahir tidak valid',
+		],
+		'desa' =>  [
+			'required' =>'field desa tidak boleh kosong',
 		],
 		'alamat' =>  [
 			'required' =>'field alamat tidak boleh kosong',
@@ -134,5 +138,41 @@ class Validation
 			'required' => 'field admin puskesmas tidak boleh kosong',
 		]
 	];
+
+
+	public $daftar_online = [
+		'nama' => 'required', 
+		'id_user' => 'required|numeric',
+		'id_puskesmas'  => 'required|numeric',
+		'no_hp' => 'required|numeric[12]', 
+		'tgl_digunakan' => 'required|valid_date',
+		'keterangan' => 'required'
+	];
+
+	public $daftar_online_errors = [
+		'nama' => [
+			'required' => 'filed nama tidak boleh kosong',
+		], 
+		'id_user'  => [
+			'required' => 'filed id_user tidak boleh kosong',
+			'number' => 'field ini harus bertipe angka',
+		],
+		'id_puskesmas' => [
+			'required' => 'filed id_user tidak boleh kosong',
+			'number' => 'field ini harus bertipe angka',
+		],
+		'no_hp' => [
+			'required' => 'field nomer hp tidak boleh kosong', 
+			'num_length' => 'filed no hp harus diatas 11 huruf'
+		],
+		'tgl_digunakan' => [
+			'required' => 'field jadwal tidak boleh kosong', 
+			'valid_date' => 'filed jadwal tanggal tidak valid', 
+		], 
+		'keterangan' => [
+			'required' => 'field keterangan tidak boleh kosog'
+		]
+	];
 }
 
+ 

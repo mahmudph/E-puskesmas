@@ -10,14 +10,14 @@ class TblUser extends Seeder
 	public function run()
 	{
 		$data = [
-			'nama' => 'darth',
-			'email'    => 'darth@theempire.com',
+			'nama' => 'admin',
+			'email'    => 'admin@gmail.com',
 			'jenis_kelamin' => 'L',
 			'tgl_lahir' => Time::createFromDate(2000, 2,15),
 			'alamat' => 'palembang city',
 			'user_level' => 1,
-			'password' => encrypter->encrypt('mahmud12ph'),
+			'password' => password_hash('administrator', PASSWORD_DEFAULT),
 		];
-		$this->db->table('tbl_user')->insert($data);
+		$this->db->table('tbl_users')->insert($data);
 	}
 }

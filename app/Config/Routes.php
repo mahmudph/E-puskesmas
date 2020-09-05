@@ -33,24 +33,31 @@ $routes->setAutoRoute(true);
 /* untuk pengguna dinas kesehatan */
 $routes->group('dinas', ['filter' => 'dinas_authorization'], function($routes) {
 	$routes->add('/', 'Dinas\Home::index');
+	$routes->add('api/notiv/laporan', 'Dinas\Home::getNotifLaporan');
 	$routes->add('puskesmas', 'Dinas\Puskesmas::index');
-	$routes->add('laporan_pasien', 'Dinas\Laporan_pasien::index');
+	$routes->add('laporan', 'Dinas\Laporan::index');
+	$routes->add('laporan/generate_data/(:id)', 'Dinas\Laporan::generate_data');
 	$routes->add('pengumuman', 'Dinas\Pengumuman::index');
-	$routes->add('pasien', 'Dinas\Pasien::index');
 });
 
 /* untuk pengguna admin puskesmas */
 $routes->group('admin',['filter' => 'admin_authorization'], function($routes) {
 	$routes->add('/', 'Admin\Home::index');
-	$routes->add('puskesmas', 'Admin\Puskes::index');
-	$routes->add('laporan_pasien', 'Admin\Laporan_pasien::index');
+	$routes->add('api/notif', 'Admin\Home::getNotif');
+	$routes->get('pendaftaran', 'Admin\PendaftaranCon::index');
+	$routes->get('pendaftaran/delete/(:num)', 'Admin\PendaftaranCon::delete/$1');
+	$routes->add('laporan', 'Admin\Laporan_pasien::index');
 	$routes->add('pengumuman', 'Admin\Pengumuman::index');
+	$routes->add('pengaturan', 'Admin\Pengaturan::index');
 });
 
 /* untuk pengguna umum */
-$routes->group('users',['filter' => 'user_authorization'], function($routes) {
+$routes->group('user',['filter' => 'user_authorization'], function($routes) {
 	$routes->add('/', 'User\Home::index');
-	$routes->add('profil', 'User\Home::index');
+	$routes->add('api/notif', 'User\Home::getNotif');
+	$routes->add('puskesmas', 'User\Puskesmas::index');
+	$routes->add('puskesmas/daftar/(:id)', 'User\Puskesmas::index/$i');
+	$routes->add('riwayat', 'User\Riwayat::index');
 });
 
 

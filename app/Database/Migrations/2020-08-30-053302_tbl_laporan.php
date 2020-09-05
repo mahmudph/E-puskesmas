@@ -21,6 +21,9 @@ class TblLaporan extends Migration
 			'tgl_laporan' =>  [
 				'type' =>'datetime', 
 				'constraint' => 6
+			],
+			'status_baca' => [
+				'type' => 'boolean',
 			]
 		]);
 

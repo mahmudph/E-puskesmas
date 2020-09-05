@@ -43,13 +43,7 @@ class BaseController extends Controller
 		// $this->session = \Config\Services::session();
 	}
 
-	public function create($a) {
-		 echo "hello word.$a";
-	}
-
-	public function show($table) {
-		echo "menampilkan tabel $table";
-	}
+	
 
 
 }

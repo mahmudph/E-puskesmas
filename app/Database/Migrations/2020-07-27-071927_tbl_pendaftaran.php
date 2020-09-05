@@ -28,12 +28,23 @@ class TblPendaftaran extends Migration
 				'constraint' => 6,
 				'null' => false
 			],
-
+			'nama' => [
+				'type' => 'varchar',
+				'constraint' => 30,
+			],
+			'no_hp' => [
+				'type' => 'varchar',
+				'constraint' => 13,
+			],
 			'tgl_digunakan' => [
 				'type' => 'datetime',
 				'constraint' => 6,
 				'null' => false
 			],
+			'keterangan' => [
+				'type' => 'text',
+				'constraint' => 150,
+			]
 		]);
 
 		$this->forge->addKey('id', true);

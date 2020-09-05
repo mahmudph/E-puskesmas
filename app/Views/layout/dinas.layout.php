@@ -28,27 +28,10 @@ scratch. This page gets rid of all links and provides the needed markup only.
       <li class="nav-item dropdown">
         <a class="nav-link" data-toggle="dropdown" href="#">
           <i class="far fa-bell"></i>
-          <span class="badge badge-warning navbar-badge">15</span>
+          <span class="badge badge-warning navbar-badge">0</span>
         </a>
-        <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-          <span class="dropdown-header">15 Notifications</span>
-          <div class="dropdown-divider"></div>
-          <a href="#" class="dropdown-item">
-            <i class="fas fa-envelope mr-2"></i> 4 new messages
-            <span class="float-right text-muted text-sm">3 mins</span>
-          </a>
-          <div class="dropdown-divider"></div>
-          <a href="#" class="dropdown-item">
-            <i class="fas fa-users mr-2"></i> 8 friend requests
-            <span class="float-right text-muted text-sm">12 hours</span>
-          </a>
-          <div class="dropdown-divider"></div>
-          <a href="#" class="dropdown-item">
-            <i class="fas fa-file mr-2"></i> 3 new reports
-            <span class="float-right text-muted text-sm">2 days</span>
-          </a>
-          <div class="dropdown-divider"></div>
-          <a href="#" class="dropdown-item dropdown-footer">See All Notifications</a>
+        <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right data-notive">
+          
         </div>
       </li>
       <li class="nav-item dropdown">
@@ -61,7 +44,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
             <a href="">
               <img src="<?= base_url('img/icon.jpeg') ?>" class="img-responsive img-circle" alt="profile" width="80px" height="80px">
             </a>
-            <p class="admin-name">solihin</p>
+            <p class="admin-name"><?= session()->get('nama')?> </p>
             
           </div>
           <div class="dropdown-divider"></div>
@@ -119,5 +102,24 @@ scratch. This page gets rid of all links and provides the needed markup only.
 </div>
 <!-- REQUIRED SCRIPTS -->
 <?= view('partials/footer-jsconfig.php') ?>
+<script>
+$(document).ready(function() {
+  $.get('<?= base_url('dinas/api/notiv/laporan') ?>', function(data){
+    $('.navbar-badge').text(data.count);
+    data.laporan.forEach((item, x) => {
+      $('.data-notive').append(`
+        <span class="dropdown-header count-notive">${data.count} notifikasi terbaru</span>
+          <div class="dropdown-divider"></div>
+          <a href="/dinas/laporan/" class="dropdown-item">
+            <i class="fas fa-envelope mr-2"></i> ${data.count} laporan terbaru
+            <span class="float-right text-muted text-sm">3 mins</span>
+        </a>
+      `);
+    });
+  });
+})
+</script>
+
+
 </body>
 </html>

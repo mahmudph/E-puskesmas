@@ -15,7 +15,7 @@
   </a>
 </li>
 <li class="nav-item">
-  <a href="<?= base_url('dinas/pasien') ?>" class="nav-link">
+  <a href="<?= base_url('dinas/laporan') ?>" class="nav-link">
     <i class="nav-icon fas fa-file-excel"></i>
     <p>
      Laporan Data Pasien 
@@ -23,7 +23,7 @@
   </a>
 </li>
 <li class="nav-item">
-  <a href="<?= base_url('dinas/pasien') ?>" class="nav-link">
+  <a href="<?= base_url('dinas/pengumuman') ?>" class="nav-link">
     <i class="nav-icon fas fa-paper-plane"></i>
     <p>
      Pengumuman

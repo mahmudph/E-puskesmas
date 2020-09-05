@@ -4,7 +4,7 @@ use CodeIgniter\Model;
 
 class UserModel extends Model {
   protected $table = 'tbl_users';
-  protected $allowedFields = ['nama', 'email', 'jenis_kelamin', 'tgl_lahir', 'alamat', 'user_level', 'password'];
+  protected $allowedFields = ['nama', 'email', 'jenis_kelamin', 'tgl_lahir','desa', 'alamat', 'user_level', 'password'];
   
   public function __construct() {
     parent::__construct();

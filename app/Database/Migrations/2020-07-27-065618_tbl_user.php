@@ -30,6 +30,11 @@ class TblUser extends Migration
 							'null'           => false,
 							"constraint"    => 6,
 			],
+			'desa' => [
+				'type' => 'VARCHAR',
+				'constraint'     => '50',
+				'null' => false,
+			],
 			'alamat' 	=> [
 							'type'           => 'TEXT',
 							'null'           => false,
@@ -55,6 +60,6 @@ class TblUser extends Migration
 
 	public function down()
 	{
-		$this->forge->dropTable('tbl_user');
+		$this->forge->dropTable('tbl_users');
 	}
 }

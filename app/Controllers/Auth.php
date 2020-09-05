@@ -10,6 +10,7 @@ class Auth extends BaseController
 		$this->users   = new UserModel();
 		$this->email 	 = \Config\Services::email();
 		$this->session = \Config\Services::session();
+		$this->puskesmas = new \App\Models\PuskesmasModel();
 		$this->form_validation = \Config\Services::validation();
 
 		if($this->session->has('is_login')) {
@@ -52,13 +53,14 @@ class Auth extends BaseController
 			$pwd  = password_verify($pwd, PASSWORD_DEFAULT);
 			$user = $this->users->find_by_email_pwd($email, $pwd);
 			if(isset($user)){
-				$data_user = ['nama' => $user->nama, 'is_login' => true,'user_level' => $user->user_level];
+				$data_user 			 = ['nama' => $user->nama, 'is_login' => true,'user_level' => $user->user_level, 'user_id' => $user->id];
 				$this->session->set($data_user);
-
 				$user_level = $this->session->get('user_level');
 				if( $user_level == 1) {
 					return redirect()->to(base_url('dinas'));
-				} elseif ($user_level = 2) {
+				} elseif ($user_level == 2) {
+						$puskesmas 			 = $this->puskesmas->where('admin_puskesmas', $user->id)->limit(1)->select('tbl_puskesmas.nama_puskesmas,tbl_puskesmas.id as puskesmas_id')->get()->getResultArray();
+						$this->session->set($puskesmas[0]);
 					return redirect()->to(base_url('admin'));
 				} else{
 					return redirect()->to(base_url('user'));
@@ -84,6 +86,7 @@ class Auth extends BaseController
 			'nama' => $this->request->getPost('nama'),
 			'email' => $this->request->getPost('email'),
 			'jenis_kelamin' => $this->request->getPost('jenis_kelamin'),
+			'desa' => $this->request->getPost('desa'),
 			'tgl_lahir' => $this->request->getPost('tgl_lahir'),
 			'alamat' => $this->request->getPost('alamat'),
 			'password'	 => $this->request->getPost('password'),

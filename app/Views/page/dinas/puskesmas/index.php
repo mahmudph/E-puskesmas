@@ -103,14 +103,14 @@ function getData(id) {
                                         <span class="tag-success"><?= $row->alamat_puskesmas?></span>
                                     </td>
                                     <td>
-                                        <a title="hapus item" href="<?= base_url("dinas/puskesmas/delete_puskesmas/$row->id")?>" class="btn btn-danger btn-sm">
+                                        <a title="hapus item" href="<?= base_url("dinas/puskesmas/delete_puskesmas/$row->id")?>" class="btn btn-danger btn-xs">
                                             <span><i class="fa fa-trash"></i></span>
                                         </a>
                                         <!-- <a title="edit item" href="<?= base_url("dinas/puskesmas/edit/$row->id")?>" class="btn btn-info btn-sm">
                                             <span><i class="fa fa-edit"></i></span>
                                         </a> -->
                                         <!-- <a title="Edit item" href='#'  class ='btn btn-info btn-sm' data-toggle="modal" data-target="#modal-lg" value=<?= $row->id ?>> -->
-                                        <a title="Edit item" href='#'  class ='btn btn-info btn-sm' id='edit_tombol' value=<?= $row->id ?> onclick="getData(<?= $row->id?>)">
+                                        <a title="Edit item" href='#'  class ='btn btn-info btn-xs' id='edit_tombol' value=<?= $row->id ?> onclick="getData(<?= $row->id?>)">
                                             <span><i class="fa fa-edit"></i></span>
                                         </a>
                                     </td>

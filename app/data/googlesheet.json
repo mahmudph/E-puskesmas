@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "bionic-tracer-288519",
+  "private_key_id": "857bd7c95f86b6c8e2c7b79caa446358f9466900",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQCTZt28HRLng1y4\nniNVz6trvolggdOxw4GwcVKDyccaHadk5V+a9YHqwUlcX16iAk1gGytVebKaMxQx\nA7J0UbTDmaWWpNrqWyhLkN7kXoK/mBKiwWchXbAECoHOjnl+hxGsQSwPkxCSTCRX\n8mj6LnN1zr2HyucBu3qcGmoNaCmjUmEB3FqytlWWvrdOAmcRq5JD7OuRV87fpz0j\nF6Ge3X1DUL8sbJ2QkytMG0rouC7BG8wGk+UhVKdvaJBE+/2OnC1E4Hh42Autk++z\nEI0o9lB/QF4D4cqr/sWzbUWPOORtt9VLCKOTPeYIwTqwuHI0iQUwmsBWPHTyF7wh\nuwYvYf+PAgMBAAECggEABuAofarZg+UTwSTXPxx1wYvcupyztDoLZaCTmcQivmwd\nr84nPIIxMjMb6ewk7OewlkgOKGmJ1DmHupWSkGxzQyB6oeFEuOPRqFy0mPBzpt5A\nGElvNxY4rKeU0H7C2g0Q3PkZRgy1HC3jEBslnG3oQtmG67uiNOl62ac9xSxTrOOL\ns5B9grRuy8NLhAko3dm/6+sn/DO9YrXjeHvEK4YgVkH/jsrbbZupwJbsYbA4BgYx\nxkYyp2ZYu1Sco/aIupZaLBvm0rOo2sx2zvWXPiDI7SsE4pd/qQyvp9lrgkQszr2k\ntpvh4/S++UrwZfmWjBsKJbzZTlOLOE2FuqX8HS850QKBgQDH9oFVX+zlu3oUJUh9\nKJPaQinsoFLm0Qy45o/oGJ7JEyKVOKYF3n84ZeXYoLlJ8UScPk1dJlFy5wyV4Rcn\n5cyXl8fxYPSEPlwzqgdn3yoymJXbT9uF3TzdGO8m2tcOy4A7Z4tipk/T3hj00SkB\n5H0edMENq7ry+a+XCLaPPHxFeQKBgQC8tZZjRA2PqYSCY19684JCCrcyPta3HSba\ndbTOmmbpaoVFb+5ElZkRnIrzG/sQ1wYu0mkfa4/hkjZL6DEmSwNGFRjzvX2RcfRa\n291/wOBguzVZyS3blNzQhk3wK5LmuWBDBtzC/aAHccMDOL82OKIdGeSqHBKrxUML\nX+MntujTRwKBgQC5e2/WuKcvJisEOt01s4kKQKtQ4hpkHm/Vp5C/Mu8/Bu/iSOy/\nrvaFYwfEXLni29jPsX7js+KDWcyzzlpDWQbhaxo9TbkiXhH6nnJGKJyk2CLRjw7K\n6kBFupZDjWVFRQEKmW6SsECF/5NYrBeEuORSduyIeM5uCauVxrBIx0tiyQKBgQCC\nYXPmYb5848KJ097ENDprJrwsGv5+xcVyaqDhngw8eTxbHVqiSDnZ0S6viUWN/QJo\nlzfKXaarUznweBx9OJaqdSkoPmPjebg6jm4bNkfQjYfu4PCuJcvqxuBSb8ivYKUB\nqlwc3N8URaVXNH3oGHjpYlp6raq4wzHvSfDIH7f9QQKBgHSU0T24r8pXFgt7OWyF\n8HO6PMzvx2Z8Y7CTR8a8y7dFJWnJrnmYZTXO4PWSHCECaxPxwJ9iue8B3W3YsCdE\n0xAImNyQgjR4jnUWuGnNXU+eww2MdsUIPwe/TNfucplAP7A0t+p5m/OFIxRFtbJt\nxDVWR1HZ3FoedcqTkAbHqkLQ\n-----END PRIVATE KEY-----\n",
+  "client_email": "php-epuskes@bionic-tracer-288519.iam.gserviceaccount.com",
+  "client_id": "105070280851896716412",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/php-epuskes%40bionic-tracer-288519.iam.gserviceaccount.com"
+}
