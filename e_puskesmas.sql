@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Sep 05, 2020 at 03:44 PM
+-- Generation Time: Sep 06, 2020 at 04:42 PM
 -- Server version: 10.1.38-MariaDB
 -- PHP Version: 7.3.3
 
@@ -65,13 +65,6 @@ CREATE TABLE `tbl_antrians` (
   `no_antrian` int(15) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
---
--- Dumping data for table `tbl_antrians`
---
-
-INSERT INTO `tbl_antrians` (`id`, `id_pendaftaran`, `no_antrian`) VALUES
-(2, 8, 2);
-
 -- --------------------------------------------------------
 
 --
@@ -109,8 +102,8 @@ CREATE TABLE `tbl_laporan_pasiens` (
 --
 
 INSERT INTO `tbl_laporan_pasiens` (`id`, `id_laporan`, `id_pendaftar`) VALUES
-(16, 13, 8),
-(17, 13, 9);
+(17, 13, 9),
+(19, 13, 9);
 
 -- --------------------------------------------------------
 
@@ -126,16 +119,17 @@ CREATE TABLE `tbl_pendaftarans` (
   `nama` varchar(30) NOT NULL,
   `no_hp` varchar(13) NOT NULL,
   `tgl_digunakan` datetime(6) DEFAULT NULL,
-  `keterangan` text NOT NULL
+  `keterangan` text NOT NULL,
+  `diagnosis` varchar(50) DEFAULT NULL,
+  `obat` varchar(50) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `tbl_pendaftarans`
 --
 
-INSERT INTO `tbl_pendaftarans` (`id`, `id_user`, `id_puskesmas`, `tgl_daftar`, `nama`, `no_hp`, `tgl_digunakan`, `keterangan`) VALUES
-(8, 3, 1, '2020-09-05 00:00:00.000000', 'andika', '085269337753', '2020-09-26 00:00:00.000000', 'aku daftar'),
-(9, 2, 1, '2020-09-02 00:00:00.000000', 'mahmud', '08555555', '2020-09-11 00:00:00.000000', 'konsultasi');
+INSERT INTO `tbl_pendaftarans` (`id`, `id_user`, `id_puskesmas`, `tgl_daftar`, `nama`, `no_hp`, `tgl_digunakan`, `keterangan`, `diagnosis`, `obat`) VALUES
+(9, 2, 1, '2020-09-02 00:00:00.000000', 'mahmud', '08555555', '2020-09-11 00:00:00.000000', 'konsultasi', 'jladlsjdladsad', 'sjdfjsfdasldf');
 
 -- --------------------------------------------------------
 
@@ -154,7 +148,8 @@ CREATE TABLE `tbl_penerima_pengumumans` (
 --
 
 INSERT INTO `tbl_penerima_pengumumans` (`id`, `id_puskes`, `id_pengumuman`) VALUES
-(1, 1, 1);
+(1, 1, 1),
+(2, 1, 2);
 
 -- --------------------------------------------------------
 
@@ -174,7 +169,8 @@ CREATE TABLE `tbl_pengumumans` (
 --
 
 INSERT INTO `tbl_pengumumans` (`id`, `judul`, `tgl_pengumuman`, `isi`) VALUES
-(1, 'pengumpulan datat', '2020-09-05 00:00:00.000000', 'sdfsldflsdfajsdflsd');
+(1, 'pengumpulan datat', '2020-09-05 00:00:00.000000', 'sdfsldflsdfajsdflsd'),
+(2, 'pelaporan data', '2020-09-05 00:00:00.000000', 'uyk');
 
 -- --------------------------------------------------------
 
@@ -185,6 +181,7 @@ INSERT INTO `tbl_pengumumans` (`id`, `judul`, `tgl_pengumuman`, `isi`) VALUES
 CREATE TABLE `tbl_puskesmas` (
   `id` int(6) NOT NULL,
   `nama_puskesmas` varchar(50) NOT NULL,
+  `email_puskesmas` varchar(50) DEFAULT NULL,
   `alamat_puskesmas` text NOT NULL,
   `status` varchar(11) NOT NULL,
   `token_aktifasi` varchar(25) NOT NULL,
@@ -195,8 +192,9 @@ CREATE TABLE `tbl_puskesmas` (
 -- Dumping data for table `tbl_puskesmas`
 --
 
-INSERT INTO `tbl_puskesmas` (`id`, `nama_puskesmas`, `alamat_puskesmas`, `status`, `token_aktifasi`, `admin_puskesmas`) VALUES
-(1, 'makarti jaya', 'makrti jaya jalan senopati ', 'belum terak', '6eea9b7ef19179a06954edd0f', 4);
+INSERT INTO `tbl_puskesmas` (`id`, `nama_puskesmas`, `email_puskesmas`, `alamat_puskesmas`, `status`, `token_aktifasi`, `admin_puskesmas`) VALUES
+(1, 'makarti jaya', ' makartijaya@gmail.com', 'makrti jaya jalan senopati ', 'teraktifasi', '', 4),
+(17, 'pandowo harjo', 'pandowoharjo@gmail.com', 'adasdasd', 'belum terak', '12345678', 0);
 
 -- --------------------------------------------------------
 
@@ -215,7 +213,8 @@ CREATE TABLE `tbl_setting_antrians` (
 --
 
 INSERT INTO `tbl_setting_antrians` (`id`, `id_puskes`, `jmlh_antrian`) VALUES
-(1, 1, 20);
+(1, 1, 10),
+(2, 17, 30);
 
 -- --------------------------------------------------------
 
@@ -226,11 +225,11 @@ INSERT INTO `tbl_setting_antrians` (`id`, `id_puskes`, `jmlh_antrian`) VALUES
 CREATE TABLE `tbl_users` (
   `id` int(6) NOT NULL,
   `nama` varchar(50) NOT NULL,
-  `email` varchar(20) NOT NULL,
-  `jenis_kelamin` char(1) NOT NULL,
-  `tgl_lahir` datetime(6) NOT NULL,
-  `desa` varchar(50) NOT NULL,
-  `alamat` text NOT NULL,
+  `email` varchar(50) NOT NULL,
+  `jenis_kelamin` char(1) DEFAULT NULL,
+  `tgl_lahir` datetime(6) DEFAULT NULL,
+  `desa` varchar(50) DEFAULT NULL,
+  `alamat` text,
   `user_level` int(1) NOT NULL DEFAULT '3',
   `password` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -243,7 +242,8 @@ INSERT INTO `tbl_users` (`id`, `nama`, `email`, `jenis_kelamin`, `tgl_lahir`, `d
 (1, 'admin', 'admin@gmail.com', 'L', '2000-02-15 00:00:00.000000', '', 'palembang city', 1, '$2y$10$t9ELaEA4V2gdCL841jM2oOrdmgUtIUUDjoKq3Xs1GCV'),
 (2, 'mahmudbae', 'mahmud@gmail.com', 'p', '2020-09-12 00:00:00.000000', 'pandowo harjo', 'pandowo harjo', 3, '$2y$10$aW5AUwJddYrqzZQPazTwde0pJSk3fQqrcoUPQM9Rnuc'),
 (3, 'andikabae', 'andika@gmail.com', 'p', '2020-09-12 00:00:00.000000', 'pandowo harjo', 'dusun 2 desa pandowo harjo', 3, '$2y$10$L11iThBKeDw5Ng.ZKso.BeDMSqnRLdSK8x5kfH2G9O4'),
-(4, 'adminbae', 'adminbae@gmail.com', 'p', '2020-12-03 00:00:00.000000', 'pandowo harjo', 'makrti jaya', 2, '$2y$10$xLpvUp0/LW5xHlW9YQ6TpupRlk8Auc2zs7knHLT7FSK');
+(10, 'admin puskesmas pandowo', 'pandowoharjo@gmail.c', NULL, NULL, 'puskesmas pandowo', 'slkfjslfdsla', 2, '$2y$10$Nv0NJauKC3IxpdUK99C0Qek/cBegRYBFGuc6fPzhtS6'),
+(11, 'admin pandowo harjo', 'pandowoharjo@gmail.com', NULL, NULL, 'pandowo harjo', 'pandowo harjo', 2, '$2y$10$mwDY09duGxY.0.w79sF3euibhQAGrHenjjQ7PAGoWse');
 
 --
 -- Indexes for dumped tables
@@ -303,8 +303,7 @@ ALTER TABLE `tbl_pengumumans`
 -- Indexes for table `tbl_puskesmas`
 --
 ALTER TABLE `tbl_puskesmas`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `tbl_puskesmas_admin_puskesmas_foreign` (`admin_puskesmas`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `tbl_setting_antrians`
@@ -345,7 +344,7 @@ ALTER TABLE `tbl_laporans`
 -- AUTO_INCREMENT for table `tbl_laporan_pasiens`
 --
 ALTER TABLE `tbl_laporan_pasiens`
-  MODIFY `id` int(6) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `id` int(6) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT for table `tbl_pendaftarans`
@@ -357,31 +356,31 @@ ALTER TABLE `tbl_pendaftarans`
 -- AUTO_INCREMENT for table `tbl_penerima_pengumumans`
 --
 ALTER TABLE `tbl_penerima_pengumumans`
-  MODIFY `id` int(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `tbl_pengumumans`
 --
 ALTER TABLE `tbl_pengumumans`
-  MODIFY `id` int(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `tbl_puskesmas`
 --
 ALTER TABLE `tbl_puskesmas`
-  MODIFY `id` int(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT for table `tbl_setting_antrians`
 --
 ALTER TABLE `tbl_setting_antrians`
-  MODIFY `id` int(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `tbl_users`
 --
 ALTER TABLE `tbl_users`
-  MODIFY `id` int(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- Constraints for dumped tables
