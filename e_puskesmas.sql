@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Sep 06, 2020 at 04:42 PM
+-- Generation Time: Sep 06, 2020 at 04:52 PM
 -- Server version: 10.1.38-MariaDB
 -- PHP Version: 7.3.3
 
@@ -194,7 +194,7 @@ CREATE TABLE `tbl_puskesmas` (
 
 INSERT INTO `tbl_puskesmas` (`id`, `nama_puskesmas`, `email_puskesmas`, `alamat_puskesmas`, `status`, `token_aktifasi`, `admin_puskesmas`) VALUES
 (1, 'makarti jaya', ' makartijaya@gmail.com', 'makrti jaya jalan senopati ', 'teraktifasi', '', 4),
-(17, 'pandowo harjo', 'pandowoharjo@gmail.com', 'adasdasd', 'belum terak', '12345678', 0);
+(18, 'pandowo harjo', 'pandowoharjo@gmail.com', 'pandowoharjo', 'teraktifasi', '', 13);
 
 -- --------------------------------------------------------
 
@@ -214,7 +214,7 @@ CREATE TABLE `tbl_setting_antrians` (
 
 INSERT INTO `tbl_setting_antrians` (`id`, `id_puskes`, `jmlh_antrian`) VALUES
 (1, 1, 10),
-(2, 17, 30);
+(3, 18, 30);
 
 -- --------------------------------------------------------
 
@@ -242,8 +242,7 @@ INSERT INTO `tbl_users` (`id`, `nama`, `email`, `jenis_kelamin`, `tgl_lahir`, `d
 (1, 'admin', 'admin@gmail.com', 'L', '2000-02-15 00:00:00.000000', '', 'palembang city', 1, '$2y$10$t9ELaEA4V2gdCL841jM2oOrdmgUtIUUDjoKq3Xs1GCV'),
 (2, 'mahmudbae', 'mahmud@gmail.com', 'p', '2020-09-12 00:00:00.000000', 'pandowo harjo', 'pandowo harjo', 3, '$2y$10$aW5AUwJddYrqzZQPazTwde0pJSk3fQqrcoUPQM9Rnuc'),
 (3, 'andikabae', 'andika@gmail.com', 'p', '2020-09-12 00:00:00.000000', 'pandowo harjo', 'dusun 2 desa pandowo harjo', 3, '$2y$10$L11iThBKeDw5Ng.ZKso.BeDMSqnRLdSK8x5kfH2G9O4'),
-(10, 'admin puskesmas pandowo', 'pandowoharjo@gmail.c', NULL, NULL, 'puskesmas pandowo', 'slkfjslfdsla', 2, '$2y$10$Nv0NJauKC3IxpdUK99C0Qek/cBegRYBFGuc6fPzhtS6'),
-(11, 'admin pandowo harjo', 'pandowoharjo@gmail.com', NULL, NULL, 'pandowo harjo', 'pandowo harjo', 2, '$2y$10$mwDY09duGxY.0.w79sF3euibhQAGrHenjjQ7PAGoWse');
+(13, 'admin pandowo harjo', 'pandowoharjo@gmail.com', NULL, NULL, 'pandowo harjo', 'pandowoharjo', 2, '$2y$10$g.RPZx/g6txzlSidNtUIaOFJcIgodrxeqRo1IMvH.bi');
 
 --
 -- Indexes for dumped tables
@@ -368,19 +367,19 @@ ALTER TABLE `tbl_pengumumans`
 -- AUTO_INCREMENT for table `tbl_puskesmas`
 --
 ALTER TABLE `tbl_puskesmas`
-  MODIFY `id` int(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `id` int(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT for table `tbl_setting_antrians`
 --
 ALTER TABLE `tbl_setting_antrians`
-  MODIFY `id` int(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `tbl_users`
 --
 ALTER TABLE `tbl_users`
-  MODIFY `id` int(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` int(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- Constraints for dumped tables
@@ -429,7 +428,7 @@ ALTER TABLE `tbl_puskesmas`
 -- Constraints for table `tbl_setting_antrians`
 --
 ALTER TABLE `tbl_setting_antrians`
-  ADD CONSTRAINT `tbl_setting_antrians_id_puskes_foreign` FOREIGN KEY (`id_puskes`) REFERENCES `tbl_puskesmas` (`id`);
+  ADD CONSTRAINT `tbl_setting_antrians_id_puskes_foreign` FOREIGN KEY (`id_puskes`) REFERENCES `tbl_puskesmas` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
