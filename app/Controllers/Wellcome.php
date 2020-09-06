@@ -18,16 +18,16 @@ class Wellcome extends BaseController
     if($this->session->get('is_login')) {
 			$usr_level =  $this->session->get('user_level');
 			if($usr_level == 1 ) {
-				return  redirect()->to('/dinas');
+				return  redirect()->to(base_url('/dinas'));
 			} else if($usr_level == 2 ){
 				
-				return  redirect()->to('/admin');
+				return  redirect()->to(base_url('/admin'));
 			} else {
 				
-				return  redirect()->to('/user');
+				return  redirect()->to(base_url('/user'));
 			}
     } else {
-      return  redirect()->to('/auth/login');
+      return  redirect()->to(base_url('/auth/login'));
     }
   }
 }

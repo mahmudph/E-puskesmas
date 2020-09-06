@@ -44,7 +44,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
           
           <div class="profile-data">
             <a href="">
-              <img src="<?= base_url('img/icon.jpeg') ?>" class="img-responsive img-circle" alt="profile" width="80px" height="80px">
+              <img src="<?= base_url('/public/img/icon.jpeg') ?>" class="img-responsive img-circle" alt="profile" width="80px" height="80px">
             </a>
             <p class="admin-name"><?= session()->get('nama')?> </p>
             
@@ -63,7 +63,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
     <a href="<?= base_url() ?>" class="brand-link">
-      <img src="<?= base_url()?>/img/icon.jpeg" alt="Banyuasin Logo" class="brand-image img elevation-3"
+      <img src="<?= base_url()?>/public/img/icon.jpeg" alt="Banyuasin Logo" class="brand-image img elevation-3"
            style="opacity: .8">
       <span class="brand-text font-weight-light">Welcome Adm</span>
     </a>
@@ -111,7 +111,7 @@ $(document).ready(function() {
       $('.data-notive').append(`
         <span class="dropdown-header count-notive">${data.count} jadwal terbaru</span>
           <div class="dropdown-divider"></div>
-          <a href="/user/riwayat" class="dropdown-item">
+          <a href="/project_sairul/user/riwayat" class="dropdown-item">
             <i class="fas fa-bell mr-2"></i> <strong>${data.count}</strong> jadwal terbaru
             <span class="float-right text-muted text-sm">3 mins</span>
         </a>
