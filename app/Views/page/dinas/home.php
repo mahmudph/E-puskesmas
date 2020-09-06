@@ -13,9 +13,9 @@
                     <div class="icon">
                         <i class="ion ion-bag"></i>
                     </div>
-                    <a href="#" class="small-box-footer">More info
+                    <!-- <a href="#" class="small-box-footer">More info
                         <i class="fas fa-arrow-circle-right"></i>
-                    </a>
+                    </a> -->
                 </div>
             </div>
             <!-- ./col -->
@@ -31,9 +31,9 @@
                     <div class="icon">
                         <i class="ion ion-stats-bars"></i>
                     </div>
-                    <a href="#" class="small-box-footer">More info
+                    <!-- <a href="#" class="small-box-footer">More info
                         <i class="fas fa-arrow-circle-right"></i>
-                    </a>
+                    </a> -->
                 </div>
             </div>
             <!-- ./col -->
@@ -41,15 +41,15 @@
                 <!-- small box -->
                 <div class="small-box bg-warning">
                     <div class="inner">
-                        <h3>44</h3>
+                        <h3><?= $laporan ?></h3>
                         <p>Total Laporan Bulan Ini</p>
                     </div>
                     <div class="icon">
                         <i class="ion ion-person-add"></i>
                     </div>
-                    <a href="#" class="small-box-footer">More info
+                    <!-- <a href="#" class="small-box-footer">More info
                         <i class="fas fa-arrow-circle-right"></i>
-                    </a>
+                    </a> -->
                 </div>
             </div>
             <!-- ./col -->
@@ -58,14 +58,14 @@
                 <div class="small-box bg-danger">
                     <div class="inner">
                         <h3><?= $satistik_pendaftar ?></h3>
-                        <p>Total Rata-Rata Pendaftar tiap Hari</p>
+                        <p>Akumulasi Total Pendaftar</p>
                     </div>
                     <div class="icon">
                         <i class="ion ion-pie-graph"></i>
                     </div>
-                    <a href="#" class="small-box-footer">More info
+                    <!-- <a href="#" class="small-box-footer">More info
                         <i class="fas fa-arrow-circle-right"></i>
-                    </a>
+                    </a> -->
                 </div>
             </div>
             <!-- ./col -->

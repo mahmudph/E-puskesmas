@@ -83,24 +83,62 @@ class Laporan extends BaseController
 		$client = new GoogleSheet();
 		$client->setApplicationName('My PHP App');
 		$client->setScopes([\Google_Service_Sheets::SPREADSHEETS]);
+		$client->addScope(\Google_Service_Drive::DRIVE);
 		$client->setAccessType('offline');
-
 		$path= APPPATH.'data/googlesheet.json';
 		$client->setAuthConfig($path);
-		$client->setAccessToken(getenv('app.googlesheettoken'));
 		$sheets = new \Google_Service_Sheets($client);
 
-		$sheetInfo = $sheets->spreadsheets->get(getenv('app.googlesheetid'))->getProperties();
-		print($sheetInfo['title']. PHP_EOL);
-
+		$spreadsheet = new \Google_Service_Sheets_Spreadsheet([
+			'properties' => [
+					'title' => 'Laporan data pendaftaran oneline'
+			]
+		]);
+		// $spreadsheet = $sheets->spreadsheets->create($spreadsheet, [
+		// 		'fields' => 'spreadsheetId'
+		// ]);
 		$options = array('valueInputOption' => 'RAW');
-		$values = [
-				["Name", "Roll No.", "Contact"],
-				["Anis", "001", "+88017300112233"],
-				["Ashik", "002", "+88017300445566"]
-		];
-		$body   = new \Google_Service_Sheets_ValueRange(['values' => $values]);
+		$values = $this->laporan->get_pasien_pendaftaran($id);
 
-		$result = $sheets->spreadsheets_values->update(getenv('app.googlesheetid'), 'A1:C3', $body, $options);
+		/* set intialize value */
+		// return $this->response->setJson($values);
+		// dd($values[])
+		$temp = [];
+			foreach($values as $key => $val) {
+				// tbl_users.nama, tbl_users.email,tbl_users.desa, tbl_users.alamat,tbl_users.jenis_kelamin, tbl_users.tgl_lahir, tbl_pendaftarans.tgl_daftar, tbl_pendaftarans.tgl_digunakan
+				array_push($temp, [($key +1), $val['nama'], $val['email'], $val['desa'], $val['alamat'], $val['jenis_kelamin'] == 'p' ? 'perempuan' : 'laki-laki', $val['tgl_lahir'], $val['tgl_daftar'], $val['tgl_digunakan']]);
+			}
+
+		// dd($temp);
+		$body = new \Google_Service_Sheets_ValueRange([
+			'values' => $temp,
+		]);
+
+		/* remove before insert */
+		// TODO: Assign values to desired properties of `requestBody`:
+		$spreadsheetId='1-l6DJYe5GESlvewE1EE9k9ZIM-Jver9PLlJ49sTCQ7w';
+		$range ='Sheet1!A1:I9';
+		$optParams=$options;
+		$requestBody = new \Google_Service_Sheets_ClearValuesRequest();
+		$response = $sheets->spreadsheets_values->clear($spreadsheetId, $range, $requestBody);
+
+		/* insert new data */
+		$result = $sheets->spreadsheets_values->update(
+			$spreadsheetId=$spreadsheetId,
+			$range = $range,
+			$body = $body,
+			$optParams=$optParams
+		);
+		
+		// $auth_url = $client->createAuthUrl();
+		// $auth_url = $client->createAuthUrl();
+		// header('Location: ' . filter_var($auth_url, FILTER_SANITIZE_URL));
+		// $client->setRedirectUri('http://' . $_SERVER['HTTP_HOST'] . '/oauth2callback.php');
+		// $httpClient = $client->authorize();
+		// $response = $httpClient->get('https://www.googleapis.com/auth/drive.readonly');
+		// print_r($response);
+		// print($spreadsheet->spreadsheetId);
+		// https://docs.google.com/spreadsheets/d/1-l6DJYe5GESlvewE1EE9k9ZIM-Jver9PLlJ49sTCQ7w/edit?usp=sharing
+		return redirect()->to("https://docs.google.com/spreadsheets/d/1-l6DJYe5GESlvewE1EE9k9ZIM-Jver9PLlJ49sTCQ7w/edit?usp=sharing");
 	}
 }

@@ -18,7 +18,9 @@ class Home extends BaseController {
 		$this->puskesmas = new PuskesmasModel();
     $this->laporan = new LaporanModel();
     $this->pengumuman = new PengumumanModel();
-		$this->form_validation = \Config\Services::validation();
+    $this->form_validation = \Config\Services::validation();
+    
+    
   }
   public function index() {
     $id_puskesmas = $this->session->get('puskesmas_id');

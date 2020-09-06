@@ -13,7 +13,7 @@ class Auth extends BaseController
 		$this->puskesmas = new \App\Models\PuskesmasModel();
 		$this->form_validation = \Config\Services::validation();
 
-		if($this->session->has('is_login')) {
+		if($this->session->get('is_login')) {
 			$usr_level =  $this->session->get('user_level');
 			if($usr_level == 1 ) {
 				return  redirect()->to('/dinas');

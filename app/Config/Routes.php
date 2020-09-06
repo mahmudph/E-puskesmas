@@ -27,7 +27,7 @@ $routes->setAutoRoute(true);
  * Route Definitions
  * --------------------------------------------------------------------
  */
-
+$routes->get('/', 'Wellcome::index');
 
 
 /* untuk pengguna dinas kesehatan */
@@ -36,7 +36,7 @@ $routes->group('dinas', ['filter' => 'dinas_authorization'], function($routes) {
 	$routes->add('api/notiv/laporan', 'Dinas\Home::getNotifLaporan');
 	$routes->add('puskesmas', 'Dinas\Puskesmas::index');
 	$routes->add('laporan', 'Dinas\Laporan::index');
-	$routes->add('laporan/generate_data/(:id)', 'Dinas\Laporan::generate_data');
+	$routes->get('laporan/generate_data(:num)', 'Dinas\Laporan::generate_data/$1');
 	$routes->add('pengumuman', 'Dinas\Pengumuman::index');
 });
 

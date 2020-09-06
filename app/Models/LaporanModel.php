@@ -56,7 +56,8 @@ class LaporanModel extends Model {
       ->join('tbl_pendaftarans', 'tbl_pendaftarans.id=tbl_laporan_pasiens.id_pendaftar')
       ->join('tbl_users', 'tbl_users.id=tbl_pendaftarans.id_user')
       ->where('tbl_laporans.id', $id)
-      ->select('tbl_pendaftarans.tgl_daftar, tbl_pendaftarans.tgl_digunakan, tbl_users.nama, tbl_users.email,tbl_users.desa, tbl_users.alamat,tbl_users.jenis_kelamin, tbl_users.tgl_lahir')->get()->getResultArray();
+      ->select('tbl_users.nama, tbl_users.email,tbl_users.desa, tbl_users.alamat,tbl_users.jenis_kelamin, tbl_users.tgl_lahir, tbl_pendaftarans.tgl_daftar, tbl_pendaftarans.tgl_digunakan')
+      ->get()->getResultArray();
   }
 }
 
