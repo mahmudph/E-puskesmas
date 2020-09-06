@@ -11,7 +11,7 @@
 <link rel="stylesheet" href="<?= base_url() ?>/public/plugins/select2/css/select2.css">
 <link rel="stylesheet" href="<?= base_url() ?>/public/plugins/select2-bootstrap4-theme/select2-bootstrap4.css">
 <link href="https://cdn.datatables.net/1.10.13/css/jquery.dataTables.min.css" rel="stylesheet">
-<link rel="stylesheet" href="<?= base_url('css/main.css') ?>">
+<link rel="stylesheet" href="<?= base_url('/public/css/main.css') ?>">
 
 <!-- Google Font: Source Sans Pro -->
 <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">

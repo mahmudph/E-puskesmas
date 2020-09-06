@@ -13,7 +13,7 @@ $data = session()->getFlashdata('response');
     <div class="row">
       <div class="col-md-5 beener-content">
         <div class="banner-welcom">
-          <img src="<?= base_url('img/icon.jpeg') ?>" alt="Benner Banyuasin" class="img-rounded img-responsive" width="150px" heiht="150px">
+          <img src="<?= base_url('/public/img/icon.jpeg') ?>" alt="Benner Banyuasin" class="img-rounded img-responsive" width="150px" heiht="150px">
         </div>
         <div class="caption-login text-center d-none d-sm-block">
           <h4>SELAMAT DATANG DI</h4>
@@ -39,7 +39,7 @@ $data = session()->getFlashdata('response');
         <div class="row">
           <div class="col-md-12 d-none d-md-block">
             <div class="login-form-icon ">
-              <img src="<?= base_url('img/hospital_logo.png')?>" alt="logo login" width="80px" height="80px" srcset="">
+              <img src="<?= base_url('/public/img/hospital_logo.png')?>" alt="logo login" width="80px" height="80px" srcset="">
               <h2 class="caption ">Form Pendaftaran Pengguna Baru</h2>
             </div>
             <div class="back-to-login" style="padding-top: 20px">
