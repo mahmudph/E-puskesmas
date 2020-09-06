@@ -34,9 +34,10 @@ class Validation
 	// Rules
 	//--------------------------------------------------------------------
 
+
 	public $login = [
     'email' => 'required|valid_email',
-    'password' => 'required|min_length[8]',
+    'password' => 'required|min_length[6]',
 	];
 
 	public $login_errors = [
@@ -49,6 +50,23 @@ class Validation
 			'min_length' => 'password tidak boleh kurang dari 6 huruf'
 		]
 	];
+
+	public $change_password = [
+		'password' => 'required|min_length[6]',
+		'confirm_password' =>'required|matches[password]',
+	];
+
+	public $change_password_errors = [
+		'password' =>  [
+			'required' => 'password tidak boleh kosong',
+			'min_length' => 'password harus memiliki  minimal 6 karakter',
+		],
+		'confirm_password' => [
+			'required' => 'password tidak boleh kosong',
+			'matches' => 'confirm password tidak cocok',
+		]
+	];
+
 
 	public $register = [
 		'nama' => 	'required|min_length[8]',
@@ -97,46 +115,50 @@ class Validation
 
 	public $new_puskesmas = [
 		'nama_puskesmas' => 'required',
+		'email_puskesmas' => 'required|valid_email',
 		'alamat_puskesmas' => 'required',
-		'admin_puskesmas' => 'required',
-		'token_aktifasi' => 'required',
+		'token_aktifasi' => 'required|min_length[6]',
 	];
 
 	public $new_puskesmas_errors = [
 		'nama_puskesmas' => [
 			'required' => 'field nama puskesmas tidak boleh kosong ',
 		],
+		'email_puskesmas' => [
+			'required' => 'field nama puskesmas tidak boleh kosong ',
+			'required' => 'field email puskesmas tidak valid ',
+		],
 		'alamat_puskesmas' => [
 			'required' => 'field alamat puskesmas tidak boleh kosong ',
 		],
 		'token_aktifasi' => [
 			'required' => 'field token aktifasi admin tidak boleh kosong ',
 		],
-		'admin_puskesmas' => [
-			'required' => 'field admin puskesmas tidak boleh kosong',
-		]
 	];
 
 	public $update_puskesmas = [
 		'nama_puskesmas' => 'required',
+		'email_puskesmas' => 'required|valid_email',
 		'alamat_puskesmas' => 'required',
-		'admin_puskesmas' => 'required',
-		'token_aktifasi' => 'required',
+		'token_aktifasi' => 'required|min_length[6]',
 	];
 
 	public $update_puskesmas_errors = [
 		'nama_puskesmas' => [
 			'required' => 'field nama puskesmas tidak boleh kosong ',
 		],
+		'email_puskesmas' => [
+			'required' => 'field nama puskesmas tidak boleh kosong ',
+			'required' => 'field email puskesmas tidak valid ',
+		],
 		'alamat_puskesmas' => [
 			'required' => 'field alamat puskesmas tidak boleh kosong ',
 		],
 		'token_aktifasi' => [
 			'required' => 'field token aktifasi admin tidak boleh kosong ',
+			'min_length' => 'field token harus diatas 6 huruf'
 		],
-		'admin_puskesmas' => [
-			'required' => 'field admin puskesmas tidak boleh kosong',
-		]
+
 	];
 
 
@@ -144,7 +166,7 @@ class Validation
 		'nama' => 'required', 
 		'id_user' => 'required|numeric',
 		'id_puskesmas'  => 'required|numeric',
-		'no_hp' => 'required|numeric[12]', 
+		'no_hp' => 'required|min_length[12]', 
 		'tgl_digunakan' => 'required|valid_date',
 		'keterangan' => 'required'
 	];
@@ -163,7 +185,7 @@ class Validation
 		],
 		'no_hp' => [
 			'required' => 'field nomer hp tidak boleh kosong', 
-			'num_length' => 'filed no hp harus diatas 11 huruf'
+			'numeric' => 'filed no hp harus diatas 11 huruf'
 		],
 		'tgl_digunakan' => [
 			'required' => 'field jadwal tidak boleh kosong', 

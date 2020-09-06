@@ -74,6 +74,8 @@ function getData(id) {
                                 <th>Tgl lahir</th>
                                 <th>Tanggal Daftar</th>
                                 <th>Tanggal Datang</th>
+                                <th>Diagnosis</th>
+                                <th>Obat Diberikan</th>
                                 <th>Aksi</th>
                             </tr>
                         </thead>
@@ -91,10 +93,9 @@ function getData(id) {
                                     <td class="text-center"><?= date('Y-m-d', strtotime($row['tgl_lahir'])) ?></td>
                                     <td class="text-center"><?= date('Y-m-d', strtotime($row['tgl_daftar']))?></td>
                                     <td class="text-center"><?= date('Y-m-d', strtotime($row['tgl_digunakan']))?></td>
+                                    <td><?= $row['diagnosis'] ?? '' ?></td>
+                                    <td><?= $row['obat'] ?? '' ?></td>
                                     <td>
-                                        <a title="edit item" href="<?= base_url("admin/pendaftaran/edit/".$row['id'])?>" class="btn btn-info btn-xs">
-                                            <span><i class="fa fa-edit fa-1x"></i></span>
-                                        </a>
                                         <a title="hapus item" href="<?= base_url("admin/pendaftaran/delete/".$row['id'])?>" class="btn btn-danger btn-xs">
                                             <span><i class="fa fa-trash fa-1x"></i></span>
                                         </a>

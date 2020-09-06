@@ -50,29 +50,55 @@ class Auth extends BaseController
 			return redirect()->to(base_url('auth/login'));
 
 		} else {
-			$pwd  = password_verify($pwd, PASSWORD_DEFAULT);
-			$user = $this->users->find_by_email_pwd($email, $pwd);
-			if(isset($user)){
-				$data_user 			 = ['nama' => $user->nama, 'is_login' => true,'user_level' => $user->user_level, 'user_id' => $user->id];
-				$this->session->set($data_user);
-				$user_level = $this->session->get('user_level');
-				if( $user_level == 1) {
-					return redirect()->to(base_url('dinas'));
-				} elseif ($user_level == 2) {
-						$puskesmas 			 = $this->puskesmas->where('admin_puskesmas', $user->id)->limit(1)->select('tbl_puskesmas.nama_puskesmas,tbl_puskesmas.id as puskesmas_id')->get()->getResultArray();
-						$this->session->set($puskesmas[0]);
-					return redirect()->to(base_url('admin'));
-				} else{
-					return redirect()->to(base_url('user'));
+
+			/* check if email exsist in tabel perpustakaan  
+				if exsist then compare password with token 
+				if same redirect to the new page and change password
+			*/
+
+			$data_puskes = $this->puskesmas->where('email_puskesmas', $email)->countAllResults();
+			$dataRow = $this->puskesmas->where('token_aktifasi !=', null)->where('email_puskesmas', $email)->get()->getRow();
+			if($data_puskes > 0 && $dataRow->token_aktifasi != null) {
+				if($dataRow->token_aktifasi == $pwd) {
+							/* data is same  then rediect */
+							return redirect()->to(base_url('auth/reset_password/'.$dataRow->id));
+				} else {
+					/* passsword tidak sama  */
+					$v['inputs'] = $this->request->getPost();
+					$v['errors'] = ['token aktifasi admin puskes tidak sama'];
+					$this->session->setFlashdata('response', $v);
+					return redirect()->to(base_url('auth/login'));
+
+
 				}
+			} else  {
+					$pwd  = password_verify($pwd, PASSWORD_DEFAULT);
+					$user = $this->users->find_by_email_pwd($email, $pwd);
 
-			} else {
-				$data['inputs'] = $this->request->getPost();
-				$data['errors'] = ['email atau password tidak terdaftar'];
-				$this->session->setFlashdata('response', $data);
 
-				return redirect()->to(base_url('auth/login'));
+					if(isset($user)){
+						$data_user 			 = ['nama' => $user->nama, 'is_login' => true,'user_level' => $user->user_level, 'user_id' => $user->id];
+						$this->session->set($data_user);
+						$user_level = $this->session->get('user_level');
+						if( $user_level == 1) {
+							return redirect()->to(base_url('dinas'));
+						} elseif ($user_level == 2) {
+								$puskesmas 			 = $this->puskesmas->where('admin_puskesmas', $user->id)->limit(1)->select('tbl_puskesmas.nama_puskesmas,tbl_puskesmas.id as puskesmas_id')->get()->getResultArray();
+								$this->session->set($puskesmas[0]);
+							return redirect()->to(base_url('admin'));
+						} else{
+							return redirect()->to(base_url('user'));
+						}
+		
+					} else {
+						$data['inputs'] = $this->request->getPost();
+						$data['errors'] = ['email atau password tidak terdaftar'];
+						$this->session->setFlashdata('response', $data);
+		
+						return redirect()->to(base_url('auth/login'));
+					}
 			}
+
 
 		}
 	}
@@ -122,29 +148,51 @@ class Auth extends BaseController
 		return redirect()->to(base_url('auth/login'));
 	}
 
-	public function reset_password() {
+	public function reset_password($id) {
 		$v['title'] = 'Reset password';
+		$v['puskesmas_id']= $id;
 		echo view('page/reset_password', $v);
 	}
 
 	public function reset_password_post() {
 		$data =[
-			'email' => $this->request->getPost('email')
+			'password' => $this->request->getPost('password'),
+			'confirm_password' => $this->request->getPost('confirm_password'),
 		];
-		$result = $this->form_validation->run($data, 'reset_pwd');
+
+		$result = $this->form_validation->run($data, 'change_password');
 		if($result) {
-			$user = $this->users->toObject()->where('email', $data['email'])->limit(1)->find();
-			if(!empty($user)) {
-				/* send reset password token here */
-				$v = ['Token reset password sudah dikirim ke email'];
-			} else {
-				$v = ['Email Tidak ditemukan'];
-			}
+			/* create new users with level 4 */
+			
+			$puskes = $this->puskesmas->where('id',$this->request->getPost('puskesmas_id'))->get()->getRow();
+			$id = $this->users->insert([
+					'nama' => 'admin '.$puskes->nama_puskesmas,
+					'email' => $puskes->email_puskesmas,
+					'jenis_kelamin' => null,
+					'tgl_lahir' => null,
+					'desa' => $puskes->nama_puskesmas,
+					'alamat' => $puskes->alamat_puskesmas,
+					'user_level' => 2, 
+					'password' => password_hash(trim($this->request->getPost('password')), PASSWORD_DEFAULT)
+			]);
+			/* update token and change status puskesmas */
+			$this->puskesmas->set('token_aktifasi', '');
+			$this->puskesmas->set('status', 'teraktifasi');
+			$this->puskesmas->set('admin_puskesmas', $id);
+			$this->puskesmas->where('email_puskesmas', $puskes->email_puskesmas)->update();
+
+
+			$v['inputs']['email'] = '';
+			$v['inputs']['password'] = '';
+			$v['errors'] = [];
 			$this->session->setFlashdata('response', $v);
-			return redirect()->to(base_url('auth/reset_pasword'));
+			return redirect()->to(base_url('auth/login'));
 		} else {
 			/* something wrong with input value */
-
+			$data['inputs'] = $this->request->getPost();
+			$data['errors'] = $this->form_validation->getErrors();
+			$this->session->setFlashdata('response', $data);
+			return redirect()->to(base_url('auth/login'));
 		}
 	}
 }

@@ -18,6 +18,11 @@ class TblPuskesmas extends Migration
 				'constraint' => 50,
 				'null' => false,
 			],
+			'email_puskesmas' => [
+				'type' => 'varchar',
+				'constraint' => 50,
+				'null' => false,
+			],
 			'alamat_puskesmas' => [
 				'type' => 'text',
 				'null' => false,
@@ -32,11 +37,6 @@ class TblPuskesmas extends Migration
 				'null' => false,
 				'constraint' => 25,
 			],
-			'admin_puskesmas' => [
-				'type' => 'int',
-				'constraint' => 6,
-				'null' => false,
-			]
 		]);
 
 		$this->forge->addKey('id', true);

@@ -3,6 +3,7 @@
 use App\Models\UserModel;
 use App\Models\PuskesmasModel;
 use App\Controllers\BaseController;
+use App\Models\AntrianSetting;
 
 class Puskesmas extends BaseController
 {
@@ -11,6 +12,7 @@ class Puskesmas extends BaseController
 		helper('form');
 		$this->session   = session();
 		$this->users     = new UserModel();
+		$this->antriansetting = new AntrianSetting();
 		$this->puskesmas = new PuskesmasModel();
 		$this->form_validation = \Config\Services::validation();
 	}
@@ -44,11 +46,11 @@ class Puskesmas extends BaseController
 	/* add simpan data baru puskesmas */
 	public function simpan_puskesmas() {
 		$data = [
-			'nama_puskesmas' => $this->request->getPost('nama_puskes'),
+			'nama_puskesmas' => $this->request->getPost('nama_puskesmas'),
+			'email_puskesmas' => $this->request->getPost('email_puskesmas'),
 			'alamat_puskesmas' => $this->request->getPost('alamat_puskes'),
 			'status' =>$this->request->getPost('status'),
 			'token_aktifasi' =>$this->request->getPost('token_aktifasi'),
-			'admin_puskesmas' => $this->request->getPost('id_admin_puskes'),
 		];
 
 		$result = $this->form_validation->run($data, 'new_puskesmas');
@@ -62,8 +64,11 @@ class Puskesmas extends BaseController
 		} else {
 			/* tidak ada eror, ismpan data  */
 			$data['status'] = 'belum teraktifasi';
-			$data['token_aktifasi'] = md5($data['token_aktifasi']);
-			$this->puskesmas->insert($data);
+			$data['token_aktifasi'] = $data['token_aktifasi'];
+			$id = $this->puskesmas->insert($data);
+
+			/* insert as default setting */
+			$this->antriansetting->insert(['id_puskes' => $id, 'jmlh_antrian' => 30]);
 			return redirect()->to(base_url('dinas/puskesmas'));
 		}
 	}
@@ -71,10 +76,10 @@ class Puskesmas extends BaseController
 	public function simpan_edited_puskesmas() {
 		$data = [
 			'id' => $this->request->getPost('id_puskes'),
-			'nama_puskesmas' => $this->request->getPost('nama_puskes'),
+			'nama_puskesmas' => $this->request->getPost('nama_puskesmas'),
+			'email_puskesmas' => $this->request->getPost('email_puskesmas'),
 			'alamat_puskesmas' => $this->request->getPost('alamat_puskes'),
 			'token_aktifasi' =>$this->request->getPost('token_aktifasi'),
-			'admin_puskesmas' => $this->request->getPost('id_admin_puskes'),
 		];
 
 		$result = $this->form_validation->run($data, 'update_puskesmas');

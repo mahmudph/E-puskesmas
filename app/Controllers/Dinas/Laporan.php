@@ -106,7 +106,7 @@ class Laporan extends BaseController
 		$temp = [];
 			foreach($values as $key => $val) {
 				// tbl_users.nama, tbl_users.email,tbl_users.desa, tbl_users.alamat,tbl_users.jenis_kelamin, tbl_users.tgl_lahir, tbl_pendaftarans.tgl_daftar, tbl_pendaftarans.tgl_digunakan
-				array_push($temp, [($key +1), $val['nama'], $val['email'], $val['desa'], $val['alamat'], $val['jenis_kelamin'] == 'p' ? 'perempuan' : 'laki-laki', $val['tgl_lahir'], $val['tgl_daftar'], $val['tgl_digunakan']]);
+				array_push($temp, [($key +1), $val['nama'], $val['email'], $val['desa'], $val['alamat'], $val['jenis_kelamin'] == 'p' ? 'perempuan' : 'laki-laki', $val['tgl_lahir'], $val['tgl_daftar'], $val['tgl_digunakan'], $val['diagnosis'], $val['obat'] ]);
 			}
 
 		// dd($temp);
@@ -117,7 +117,7 @@ class Laporan extends BaseController
 		/* remove before insert */
 		// TODO: Assign values to desired properties of `requestBody`:
 		$spreadsheetId='1-l6DJYe5GESlvewE1EE9k9ZIM-Jver9PLlJ49sTCQ7w';
-		$range ='Sheet1!A1:I9';
+		$range ='Sheet1!A1:K9';
 		$optParams=$options;
 		$requestBody = new \Google_Service_Sheets_ClearValuesRequest();
 		$response = $sheets->spreadsheets_values->clear($spreadsheetId, $range, $requestBody);

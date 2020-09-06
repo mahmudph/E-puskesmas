@@ -110,7 +110,7 @@ $(document).ready(function() {
       $('.data-notive').append(`
         <span class="dropdown-header count-notive">${data.count} notifikasi terbaru</span>
           <div class="dropdown-divider"></div>
-          <a href="/project_sairul/dinas/laporan/" class="dropdown-item">
+          <a href="/puskesmas/dinas/laporan/" class="dropdown-item">
             <i class="fas fa-envelope mr-2"></i> ${data.count} laporan terbaru
             <span class="float-right text-muted text-sm">3 mins</span>
         </a>

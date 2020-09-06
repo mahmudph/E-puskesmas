@@ -46,6 +46,9 @@ $routes->group('admin',['filter' => 'admin_authorization'], function($routes) {
 	$routes->add('api/notif', 'Admin\Home::getNotif');
 	$routes->get('pendaftaran', 'Admin\PendaftaranCon::index');
 	$routes->get('pendaftaran/delete/(:num)', 'Admin\PendaftaranCon::delete/$1');
+	$routes->get('pendaftaran/edit/(:num)', 'Admin\PendaftaranCon::ubah/$1');
+	$routes->post('pendaftaran/update', 'Admin\PendaftaranCon::update');
+	$routes->get('pendaftaran/riwayat', 'Admin\PendaftaranCon::riwayat');
 	$routes->add('laporan', 'Admin\Laporan_pasien::index');
 	$routes->add('pengumuman', 'Admin\Pengumuman::index');
 	$routes->add('pengaturan', 'Admin\Pengaturan::index');

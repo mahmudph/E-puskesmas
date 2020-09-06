@@ -89,7 +89,7 @@ function getData(url, tahun, bulan) {
                         <td>${new Date(item.tgl_laporan).toLocaleDateString()}</td>
                         <td><span class="btn ${item.status_baca == 0 ? 'btn-danger' : 'btn-success'} btn-xs"> ${item.status_baca == 1 ? 'terpenuhi' : 'belum terpenuhi'}</span></td>
                         <td>
-                            <a href='/dinas/laporan/detail/${item.id}'>detail</a>
+                            <a href='/puskesmas/dinas/laporan/detail/${item.id}'>detail</a>
                         </td>
                     </tr>`
                 );

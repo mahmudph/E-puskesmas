@@ -109,11 +109,11 @@ $(document).ready(function() {
       $('.data-notive').append(`
         <span class="dropdown-header count-notive">${data.count} notifikasi terbaru</span>
           <div class="dropdown-divider"></div>
-          <a href="/project_sairul/admin/pengumuman/" class="dropdown-item">
+          <a href="/puskesmas/admin/pengumuman/" class="dropdown-item">
             <i class="fas fa-envelope mr-2"></i> ${data.count} pengumuman terbaru
             <span class="float-right text-muted text-sm">1 mins</span>
           </a>
-          <a href="/project_sairul/admin/pendaftaran/" class="dropdown-item">
+          <a href="/puskesmas/admin/pendaftaran/" class="dropdown-item">
             <i class="fas fa-envelope mr-2"></i> ${data.pendaftar} pendaftar terbaru
             <span class="float-right text-muted text-sm">1 mins</span>
           </a>

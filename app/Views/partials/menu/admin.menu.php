@@ -15,6 +15,14 @@
   </a>
 </li>
 <li class="nav-item">
+  <a href="<?= base_url('admin/pendaftaran/riwayat') ?>" class="nav-link">
+    <i class="nav-icon fas fa-history"></i>
+    <p>
+      Riwayat Pendaftaran
+    </p>
+  </a>
+</li>
+<li class="nav-item">
   <a href="<?= base_url('admin/laporan') ?>" class="nav-link">
     <i class="nav-icon fas fa-file-excel"></i>
     <p>

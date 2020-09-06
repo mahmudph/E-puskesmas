@@ -4,7 +4,7 @@ use CodeIgniter\Model;
 
 class PuskesmasModel extends Model {
   protected $table = 'tbl_puskesmas';
-  protected $allowedFields = ['nama_puskesmas', 'status','token_aktifasi', 'alamat_puskesmas', 'admin_puskesmas'];
+  protected $allowedFields = ['nama_puskesmas', 'status','token_aktifasi', 'alamat_puskesmas', 'admin_puskesmas', 'email_puskesmas'];
   public function insertData($data) {
     $this->db->insert($data);
   }

@@ -45,6 +45,10 @@ $data = session()->getFlashdata('response');
                             <td><strong> <?= ucfirst($puskesmas->nama_puskesmas) ?></strong></td>
                           </tr>
                           <tr>
+                            <td>Email Puskesmas</td>
+                            <td><strong> <?= ucfirst($puskesmas->email_puskesmas) ?></strong></td>
+                          </tr>
+                          <tr>
                             <td>Admin Puskesmas</td>
                             <td><strong><?= ucfirst($puskesmas->nama)?></strong></td>
                           </tr>

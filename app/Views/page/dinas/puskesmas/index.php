@@ -11,7 +11,7 @@ function getData(id) {
             console.log(data);
             // $('#nama_puskes').val(data[0].nama_puskesmas);
             $('#nama_puskes').attr('value', data[0].nama_puskesmas)
-
+            $('#email_puskes').attr('value', data[0].email_puskesmas)
             $('#alamat_puskes').text(data[0].alamat_puskesmas);
             $('#status').attr('value',data[0].status);
             $('#token_aktifasi').attr('value',data[0].token_aktifasi);
@@ -85,7 +85,9 @@ function getData(id) {
                             <tr>
                                 <th>No</th>
                                 <th>Puskesmas</th>
+                                <th>Email</th>
                                 <th>Status</th>
+                                <th>Token</th>
                                 <th>Alamat Puskesmas</th>
                                 <th>Aksi</th>
                             </tr>
@@ -98,7 +100,9 @@ function getData(id) {
                                 <tr>
                                     <td><?=  $i ?></td>
                                     <td><?= $row->nama_puskesmas?></td>
+                                    <td><?= $row->email_puskesmas ?? null ?></td>
                                     <td><a href="<?= base_url("dinas/puskesmas?status=$row->status") ?>" class="btn <?=$row->status =='aktif' ? 'badge bg-success' : 'badge bg-info'?> badge-sm"><?= $row->status?></a></td>
+                                    <td>**************</td>
                                     <td>
                                         <span class="tag-success"><?= $row->alamat_puskesmas?></span>
                                     </td>
@@ -142,9 +146,12 @@ function getData(id) {
                             <div class="form-group">
                                 <?= form_input(["name" =>'id_puskes', 'id' => 'id_puskes', 'type'=> 'hidden', 'value' => ''])?>
                                 <?= form_label('Nama Puskemas', 'nama_puskes')?>
-                                <?= form_input(['name' => 'nama_puskes', 'id' => 'nama_puskes','class' => 'form-control', 'placeholder' => 'nama puskemas'])?>
+                                <?= form_input(['name' => 'nama_puskesmas', 'id' => 'nama_puskes','class' => 'form-control', 'placeholder' => 'nama puskemas'])?>
                             </div>
-                            
+                            <div class="form-group">
+                                <?= form_label('Email puskes', 'Email puskesmas')?>
+                                <?= form_input(['name' => 'email_puskesmas', 'id' => 'email_puskes','class' => 'form-control', 'placeholder' => 'email puskemas'])?>
+                            </div>
                             <div class="form-group">
                                 <?= form_label('Alamat Puskemas', 'alamat_pusksemas')?>
                                 <?= form_textarea(['name' => 'alamat_puskes','id' => 'alamat_puskes', 'class' => 'form-control', 'placeholder' => 'Alamat puskemas', 'rows' => 3])?>
@@ -152,19 +159,6 @@ function getData(id) {
                             <div class="form-group">
                                 <?= form_label('Token Aktifasi', 'token_aktifasi')?>
                                 <?= form_input(['name' => 'token_aktifasi','id' => 'token_aktifasi',  'class' => 'form-control', 'placeholder' => 'Token aktifasi '])?>
-                            </div>
-                            <div class="form-group">
-                                <?= form_label('Admin Puskesmas', 'id_admin_puskes')?>
-                                <select name="id_admin_puskes" id="id_admin_puskes" class="form-control select2bs4 select2-hidden-accessible" style="width: 100%;" data-select2-id="1" tabindex="-1" aria-hidden="true">
-                                    <?php foreach($users as $user) : ?>
-                                        <option data-select2-id="<?= $user->id ?>" value="<?= $user->id ?>"><?= $user->nama ?></option>
-                                    <?php endforeach ?>
-                                </select>
-                              <span class="select2 select2-container select2-container--bootstrap4 select2-container--above select2-container--focus"
-                                dir="ltr"
-                                data-select2-id="1"
-                                style="width: 100%;">
-                            </span>
                             </div>
                         <?= form_close()?>
                     </div>

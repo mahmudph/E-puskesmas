@@ -13,7 +13,7 @@ $data = session()->getFlashdata('response');
     <div class="row">
       <div class="col-md-5 beener-content ">
         <div class="banner-welcom">
-          <img src="<?= base_url('img/icon.jpeg') ?>" alt="Benner Banyuasin" class="img-rounded img-responsive" width="150px" heiht="150px">
+          <img src="<?= base_url('public/img/icon.jpeg') ?>" alt="Benner Banyuasin" class="img-rounded img-responsive" width="150px" heiht="150px">
         </div>
         <div class="caption-login text-center d-none d-sm-block">
           <h4>SELAMAT DATANG DI</h4>
@@ -39,12 +39,12 @@ $data = session()->getFlashdata('response');
         <div class="row">
           <div class="col-md-12 d-none d-md-block">
             <div class="login-form-icon ">
-              <img src="<?= base_url('img/hospital_logo.png')?>" alt="logo login" width="80px" height="80px" srcset="">
-              <h2 class="caption ">Form Reset Password</h2>
+              <img src="<?= base_url('public/img/hospital_logo.png')?>" alt="logo login" width="80px" height="80px" srcset="">
+              <h2 class="caption ">Form Ganti Password</h2>
             </div>
           </div>
           <div class="col-md-6 offset-md-3 form-input">
-            <h4 class="text-center">Email Anda</h4>
+            <h4 class="text-center">Password </h4>
             <?php if(!empty($data['success'])) : ?>
                 <div class="alert alert-success alert-sm" role="alert">
                     <ul>
@@ -57,17 +57,24 @@ $data = session()->getFlashdata('response');
             <form action="<?= base_url('auth/reset_password_post')?>" method="post" >
               <div class="input-group mb-3">
                 <div class="input-group-prepend">
-                  <span class="input-group-text"><i class="fas fa-envelope"></i></span>
+                  <span class="input-group-text"><i class="fas fa-lock"></i></span>
                 </div>
-                <input type="email" class="form-control" name="email" placeholder="Email" value="<?= $data['inputs']['email'] ?>">
+                <input type="password" class="form-control" name="password" placeholder="password anda" value="<?= $data['inputs']['password'] ?>">
+              </div>
+              <div class="input-group mb-3">
+              <div class="input-group-prepend">
+                  <span class="input-group-text"><i class="fas fa-lock"></i></span>
+                </div>
+                <input type="hidden" name="puskesmas_id" value="<?=$puskesmas_id?>">
+                <input type="password" name="confirm_password" id="" class="form-control" placeholder="confirm password">
               </div>
               <div class="input-group mb-3">
                 <input type="submit" class="form-control btn btn-primary" placeholder="Email" value="Reset">
               </div>
               <div class="row register"> 
-                <div class="col-md-6 col-xs-6">
+                <!-- <div class="col-md-6 col-xs-6">
                   <a href="<?= base_url('auth/lupa_password') ?>">Lupa Password..?</a>
-                </div>
+                </div> -->
                 <div class="col-md-6 col-xs-6">
                   <a href="<?= base_url('auth/register') ?>">Daftar akun</a>
                 </div>

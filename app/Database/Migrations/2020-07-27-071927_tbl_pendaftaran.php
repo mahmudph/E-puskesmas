@@ -44,7 +44,19 @@ class TblPendaftaran extends Migration
 			'keterangan' => [
 				'type' => 'text',
 				'constraint' => 150,
-			]
+			],
+			'obat' => [
+				'type' => 'varchar',
+				'constraint' => 30,
+				'default' => null,
+				'null' => true,
+			],
+			'diagnosa' => [
+				'type' => 'varchar',
+				'constraint' => 30,
+				'default' => null,
+				'null' => true,
+			],
 		]);
 
 		$this->forge->addKey('id', true);

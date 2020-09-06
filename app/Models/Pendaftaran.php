@@ -4,7 +4,7 @@ use Codeigniter\Model;
 
 class Pendaftaran extends Model {
   protected $table = 'tbl_pendaftarans';
-  protected $allowedFields = ['id_user', 'id_puskesmas', 'tgl_daftar', 'tgl_digunakan', 'nama', 'no_hp', 'keterangan'];
+  protected $allowedFields = ['id_user', 'id_puskesmas', 'tgl_daftar', 'tgl_digunakan', 'nama', 'no_hp', 'keterangan', 'diagnosis', 'obat'];
 
 
   public function __construct() {
