@@ -72,7 +72,7 @@ $data = session()->getFlashdata('response');
               </div>
               <div class="row register"> 
                 <div class="col-md-6 col-xs-6">
-                  <a href="<?= base_url('auth/reset_password') ?>">Lupa Password..?</a>
+                  <!-- <a href="<?= base_url('auth/reset_password') ?>">Lupa Password..?</a> -->
                 </div>
                 <div class="col-md-6 col-xs-6">
                   <a href="<?= base_url('auth/register') ?>">Daftar akun</a>
