@@ -10,9 +10,9 @@ class AntrianModel extends Model {
     parent::__construct();
   }
 
-  public function get_antrian($id) {
+  public function get_antrian($id, $tgl_digunakan) {
     return $this->db->table($this->table)->join('tbl_pendaftarans', 'tbl_pendaftarans.id=tbl_antrians.id_pendaftaran')
-    ->where('tbl_pendaftarans.id_puskesmas', $id)->where('tbl_pendaftarans.tgl_daftar', date('Y-m-d'));
+    ->where('tbl_pendaftarans.id_puskesmas', $id)->where('tbl_pendaftarans.tgl_digunakan', $tgl_digunakan);
   }
 }
 

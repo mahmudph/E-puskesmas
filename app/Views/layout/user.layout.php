@@ -111,7 +111,7 @@ $(document).ready(function() {
       $('.data-notive').append(`
         <span class="dropdown-header count-notive">${data.count} jadwal terbaru</span>
           <div class="dropdown-divider"></div>
-          <a href="/puskesmas/user/riwayat" class="dropdown-item">
+          <a href="/puskesmas/user" class="dropdown-item">
             <i class="fas fa-bell mr-2"></i> <strong>${data.count}</strong> jadwal terbaru
             <span class="float-right text-muted text-sm">3 mins</span>
         </a>

@@ -48,7 +48,7 @@ class Puskesmas extends BaseController {
 
     /* get jumlah antrian hari ini  */
     if($setting) {
-      $totalAntrian = $this->antrian->get_antrian($id)->countAllResults();
+      $totalAntrian = $this->antrian->get_antrian($id, null)->countAllResults();
       if($setting->jmlh_antrian > $totalAntrian) {
         $v['content'] = 'page/users/puskesmas/daftar';
         $v['title']	 = 'Puskesmas';
@@ -93,7 +93,7 @@ class Puskesmas extends BaseController {
       $id = $this->pendaftaran->insert($data);
 
       /* tentukan antrian hari ini */
-      $antrian = $this->antrian->get_antrian($this->request->getPost('id_puskesmas'))->countAllResults();
+      $antrian = $this->antrian->get_antrian($this->request->getPost('id_puskesmas'), $data['tgl_digunakan'])->countAllResults();
       $this->antrian->insert(['id_pendaftaran'=> $id, 'no_antrian' => $antrian == 0 ? 1 : $antrian + 1 ]);
 			return redirect()->to(base_url('user/puskesmas/'));
 		}

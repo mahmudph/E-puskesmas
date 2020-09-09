@@ -34,12 +34,12 @@ class Pendaftaran extends Model {
     ->join('tbl_users', 'tbl_users.id=tbl_pendaftarans.id_user')
     ->join('tbl_antrians', 'tbl_antrians.id_pendaftaran=tbl_pendaftarans.id');
     if($lewat) {
-      $data->where([
+      $data = $data->where([
         'id_user' => $user_id,
         'tgl_digunakan <' =>  date('Y-m-d'),
       ]);
     } else {
-      $data->where([
+      $data = $data->where([
         'id_user' => $user_id,
         'tgl_digunakan >' =>  date('Y-m-d'),
       ]);

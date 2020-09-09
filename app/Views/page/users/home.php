@@ -8,7 +8,7 @@
                         <div class="card-body">
                             <h5 class="card-title">Jadwal <?= $jdw['id'] ?></h5>
                                 <p class="card-text">
-                                    <strong><?= session()->get('nama')?></strong> Anda Memiliki jadwal atas nama <strong><?= ucfirst($jdw['nama'])?></strong> untuk datang ke puskesmas <strong><?= ucfirst($jdw['nama_puskesmas'])?></strong> pada tanggal <strong><?= date('Y-m-d', strtotime($jdw['tgl_daftar']))?></strong>
+                                    <strong><?= session()->get('nama')?></strong> Anda Memiliki jadwal atas nama <strong><?= ucfirst($jdw['nama'])?></strong> untuk datang ke puskesmas <strong><?= ucfirst($jdw['nama_puskesmas'])?></strong> pada tanggal <strong><?= date('Y-m-d', strtotime($jdw['tgl_digunakan']))?></strong>
                                 </p>
                             <!-- <a href="<?= base_url('user/riwayat')?>" class="card-link">Lihat Riwayat </a> -->
                             <a href="#" class="card-link">

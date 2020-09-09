@@ -104,10 +104,14 @@ class Laporan extends BaseController
 		// return $this->response->setJson($values);
 		// dd($values[])
 		$temp = [];
+		$header = [['No', 'nama', 'email', 'desa', 'alamat', 'jenis_kelamin', 'tanggal_daftar', 'tgl_digunakan', 'diagnosis', 'obat']];
 			foreach($values as $key => $val) {
 				// tbl_users.nama, tbl_users.email,tbl_users.desa, tbl_users.alamat,tbl_users.jenis_kelamin, tbl_users.tgl_lahir, tbl_pendaftarans.tgl_daftar, tbl_pendaftarans.tgl_digunakan
-				array_push($temp, [($key +1), $val['nama'], $val['email'], $val['desa'], $val['alamat'], $val['jenis_kelamin'] == 'p' ? 'perempuan' : 'laki-laki', $val['tgl_lahir'], $val['tgl_daftar'], $val['tgl_digunakan'], $val['diagnosis'], $val['obat'] ]);
+				array_push($temp, [($key +1), $val['nama'], $val['email'], $val['desa'], $val['alamat'], $val['jenis_kelamin'] == 'p' ? 'perempuan' : 'laki-laki', $val['tgl_daftar'], $val['tgl_digunakan'], $val['diagnosis'], $val['obat'] ]);
 			}
+
+		// dd($temp);
+		$temp = array_merge($header, $temp);
 
 		// dd($temp);
 		$body = new \Google_Service_Sheets_ValueRange([
