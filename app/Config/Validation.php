@@ -69,20 +69,20 @@ class Validation
 
 
 	public $register = [
-		'nama' => 	'required|min_length[8]',
+		'nama' => 	'required|min_length[2]',
 		'email' => 'required|valid_email',
 		'jenis_kelamin' => 'required|in_list[pria, wanita]',
 		'tgl_lahir' => 'required|valid_date',
 		'desa' => 'required',
-		'alamat' => 'required|min_length[8]',
-		'password'	 =>'required|min_length[8]',
+		'alamat' => 'required|min_length[4]',
+		'password'	 =>'required|min_length[5]',
 		'confirm_password' => 'required|matches[password]',
 	];
 
 	public $register_errors = [
 		'nama' => [
 			'required' =>'field nama tidak boleh kosong',
-			'min_length' => 'field nama harus memiliki minimal sebanyak 8',
+			'min_length' => 'field nama harus memiliki minimal sebanyak 4 karakter',
 		],
 		'email' => [
 			'required' =>'field email tidak boleh kosong',
@@ -101,11 +101,11 @@ class Validation
 		],
 		'alamat' =>  [
 			'required' =>'field alamat tidak boleh kosong',
-			'min_length' => 'field alamat harus memiliki minimal sebanyak 8',
+			'min_length' => 'field alamat harus memiliki minimal sebanyak 5 karakter',
 		],
 		'password'	 => [
 			'required' =>'field password tidak boleh kosong',
-			'min_length' => 'field password minimal sebanyak 8 huruf',
+			'min_length' => 'field password minimal sebanyak 5 huruf',
 		],
 		'confirm_password' =>  [
 			'required' =>'field konfirmasi password tidak boleh kosong',

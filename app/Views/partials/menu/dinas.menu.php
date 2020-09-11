@@ -1,8 +1,8 @@
-<li class="nav-item has-treeview menu-open">
+<li class="nav-item has-treeview">
   <a href="<?= base_url('dinas') ?>" class="nav-link">
     <i class="nav-icon fas fa-home"></i>
     <p>
-      Dasboard
+      Dashboard
     </p>
   </a>
 </li>

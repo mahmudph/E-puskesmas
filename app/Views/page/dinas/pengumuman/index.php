@@ -55,10 +55,10 @@ $data = session()->getFlashdata('response');
                                     <td><?= $row['isi'] ?></td>
                                     <td>
                                         <span>
-                                            <a href="<?= base_url('dinas/pengumuman/ubah/'.$row['id'])?>">ubah</a>
+                                            <a class="btn btn-info btn-xs" href="<?= base_url('dinas/pengumuman/ubah/'.$row['id'])?>">   <span><i class="fa fa-edit "></i></span></a>
                                         </span>
                                         <span>
-                                            <a href="<?= base_url('dinas/pengumuman/hapus/'.$row['id'])?>">hapus</a>
+                                            <a class="btn btn-danger btn-xs" href="<?= base_url('dinas/pengumuman/hapus/'.$row['id'])?>"> <span><i class="fa fa-trash"></i></span></a>
                                         </span>
                                     </td>
                                 </tr>

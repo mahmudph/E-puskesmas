@@ -2,7 +2,7 @@
   <a href="<?= base_url('admin') ?>" class="nav-link">
     <i class="nav-icon fas fa-home"></i>
     <p>
-      Dasboard
+      Dashboard
     </p>
   </a>
 </li>

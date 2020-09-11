@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
+  <?php error_reporting(0)?>
   <?= view('partials/head') ?>
 </head>
 <?php 
@@ -29,7 +31,7 @@ $data = session()->getFlashdata('response');
             </div>
             <div class="col-md-8">
               <a href="">
-                <span class="fa fa-instagram"> </span> @dinkesbanyuasin
+                <span class="fa fa-twitter"> </span> @dinkesbanyuasin
               </a>
             </div>
           </div>
@@ -75,7 +77,7 @@ $data = session()->getFlashdata('response');
                   <!-- <a href="<?= base_url('auth/reset_password') ?>">Lupa Password..?</a> -->
                 </div>
                 <div class="col-md-6 col-xs-6">
-                  <a href="<?= base_url('auth/register') ?>">Daftar akun</a>
+                  <a href="<?= base_url('auth/register') ?>">Daftar akun PASIEN</a>
                 </div>
               </div>
             </form>

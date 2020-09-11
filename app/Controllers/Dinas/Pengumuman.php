@@ -19,7 +19,7 @@ class Pengumuman extends BaseController
 	public function index(){
 		$data['title']	 = 'Pengumuman';
 		$data['content'] = 'page/dinas/pengumuman/index';
-    $data['pengumuman']  = $this->pengumuman->get_pengumuman();
+    $data['pengumuman']  = $this->pengumuman->get()->getResultArray();
 		echo view('layout/dinas.layout.php', $data);
 	}	
 

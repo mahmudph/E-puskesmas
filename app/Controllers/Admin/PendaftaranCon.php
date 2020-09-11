@@ -24,8 +24,8 @@ class PendaftaranCon extends BaseController {
     $id_puskesmas = $this->session->get('puskesmas_id');
   	$v['content'] = 'page/admin/pendaftaran/index';
     $v['title']	 = 'List Data Pendafar';
-    $v['total'] = $this->pendaftaran->get_data($id_puskesmas)->where(['diagnosis' => '', 'obat' => ''])->countAllResults();
-    $v['pendaftar'] = $this->pendaftaran->get_data($id_puskesmas)->where(['diagnosis' => '', 'obat' => ''])->get()->getResultArray();
+    $v['total'] = $this->pendaftaran->get_data($id_puskesmas)->where(['diagnosis' => null, 'obat' => null])->countAllResults();
+    $v['pendaftar'] = $this->pendaftaran->get_data($id_puskesmas)->where(['diagnosis' =>null, 'obat' => null])->get()->getResultArray();
 		echo view('layout/admin.layout.php', $v);
   }
 

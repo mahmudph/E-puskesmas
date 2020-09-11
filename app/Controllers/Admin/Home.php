@@ -37,9 +37,7 @@ class Home extends BaseController {
     $v['count'] = $this->pengumuman->get_pengumumans($id_puskesmas)->countAllResults();
     $v['pengumuman'] =  $this->pengumuman->get_pengumumans($id_puskesmas)->get()->getResultArray();
     // $v['pendaftar'] = $this->pendaftaran->statistik_count($id_puskesmas)->where('DAY(tgl_daftar)', date('d'))->where('tgl_digunakan >',date('Y-m-d'))->countAllResults();
-    $v['pendaftar'] = $this->pendaftaran->statistik_count($id_puskesmas)
-    ->where('diagnosis', '')->where('obat', '')
-    ->countAllResults();
+    $v['pendaftar'] = $this->pendaftaran->statistik_count($id_puskesmas)->where('diagnosis', null)->where('obat', null)->countAllResults();
 		return $this->response->setJson($v);
 	}
 
